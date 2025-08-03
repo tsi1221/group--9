@@ -1,0 +1,25 @@
+# === Global Ignored Files ===
+node_modules/
+dist/
+build/
+.env
+*.log
+
+# === OS Specific ===
+.DS_Store
+Thumbs.db
+
+# === Vite Cache ===
+.vite/
+.vscode/
+
+# === React Build ===
+frontend/build/
+
+# === Backend Specific ===
+backend/node_modules/
+backend/.env
+
+# === Frontend Specific ===
+frontend/node_modules/
+frontend/.env
