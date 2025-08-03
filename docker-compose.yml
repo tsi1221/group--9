@@ -10,6 +10,8 @@ services:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5434:5432"
+    networks:
+      - equity-network
 
   backend:
     build: ./backend
@@ -27,6 +29,8 @@ services:
       DB_NAME: equitylite
     depends_on:
       - db
+    networks:
+      - equity-network
 
   frontend:
     build: ./frontend
@@ -38,6 +42,12 @@ services:
     command: npm run dev
     depends_on:
       - backend
+    networks:
+      - equity-network
 
 volumes:
   pgdata:
+
+networks:
+  equity-network:
+    driver:  bridge
