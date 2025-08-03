@@ -1,0 +1,15 @@
+
+node_modules
+
+dist
+build
+
+.env
+.env.local
+
+.cache
+*.log
+
+.idea
+.vscode
+*.swp

@@ -1,0 +1,43 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: equityadmin
+      POSTGRES_PASSWORD: insasummercamp4
+      POSTGRES_DB: equitylite
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    command: npx nodemon server.js
+    environment:
+      DB_HOST: db
+      DB_PORT: 5433
+      DB_USER: equityadmin
+      DB_PASSWORD: insasummercamp4
+      DB_NAME: equitylite
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    command: npm run dev
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

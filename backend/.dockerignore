@@ -1,0 +1,10 @@
+
+node_modules
+.env
+.env.local
+*.log
+tmp
+dist
+.idea
+.vscode
+*.swp
