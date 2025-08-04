@@ -61,9 +61,10 @@ EquityLite Ethiopia employs a multi-faceted and sustainable revenue model:
 3.Investor Subscription: Vetted investors can subscribe to monthly or annual premium plans for access to exclusive features, market insights, and advanced analytics.
 
 4.Business Verification Service: An optional due diligence and background check service is offered for a fee, providing comprehensive reports to investors.
-----------------------------------------------------------------------------
-----------------------------------------------------------------------------
-----------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 Setup:
 Run npm install in both frontend and backend folders.
 Start frontend: npm run dev (http://localhost:5173/)
