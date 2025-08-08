@@ -68,5 +68,5 @@ EquityLite Ethiopia employs a multi-faceted and sustainable revenue model:
 Setup:
 Run npm install in both frontend and backend folders.
 Start frontend: npm run dev (http://localhost:5173/)
-Start backend: npx nodemon server.js (http://localhost:5000/)
+Start backend: npx nodemon server.js (http://localhost:3000/)
 docker run postgres:15-alpine
