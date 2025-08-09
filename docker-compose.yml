@@ -50,4 +50,4 @@ volumes:
 
 networks:
   equity-network:
-    driver:  bridge
+    driver:  bridge 

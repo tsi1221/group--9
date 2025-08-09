@@ -1,8 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { createUser } = require('../models/userModel');
-const { generateToken } = require('../utils/tokenUtils');
-const { getUserByEmail } = require('../models/userModel');
+// const { generateToken } = require('../utils/tokenUtils');
+// const { getUserByEmail } = require('../models/userModel');
 require('dotenv').config();
 
 const register = async (req, res) => {
@@ -31,30 +31,30 @@ const register = async (req, res) => {
 };
 
 //login function
-const login = async (req, res) => {
-  const { email, password } = req.body;
+// const login = async (req, res) => {
+//   const { email, password } = req.body;
 
-  try {
-    const user = await getUserByEmail(email);
+//   try {
+//     const user = await getUserByEmail(email);
 
-    if (!user || user.provider !== 'local') {
-      return res.status(400).json({ message: 'Invalid email or method' });
-    }
+//     if (!user || user.provider !== 'local') {
+//       return res.status(400).json({ message: 'Invalid email or method' });
+//     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: 'Invalid password' });
+//     const isMatch = await bcrypt.compare(password, user.password);
+//     if (!isMatch) return res.status(400).json({ message: 'Invalid password' });
 
-    const token = generateToken(user);
-    res.status(200).json({ user, token });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: err.message || 'Server error' });
-  }
-};
-
+//     const token = generateToken(user);
+//     res.status(200).json({ user, token });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: err.message || 'Server error' });
+//   }
+// };
+// login,
 
 
 
 module.exports = {
-  register,login,
+  register,
 };

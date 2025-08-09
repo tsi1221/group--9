@@ -7,7 +7,18 @@ function App() {
   return (
     <>
       <div>
-      <h1>i am a winner always what ever when ever</h1>
+      <h3>🧠💻 Welcome to INSA SUMMER CAMP 2025! 💻🧠
+🌍 Group Project powered by Passion, Code & Collaboration 👨‍💻👩‍💻
+</h3>
+ <h3>🧠💻 Welcome to INSA SUMMER CAMP 2025! 💻🧠
+🌍 Group Project powered by Passion, Code & Collaboration 👨‍💻👩‍💻
+</h3>
+   <button onClick={() => setCount((count) => count + 1)}>
+          lets start to work as ateam sprerte{count}
+        </button>
+        <button onClick={() => setCount((count) => count + 1)}>
+          lets push ourself out of comfort zone{count}
+        </button>
       </div>
      
       <div className="card">
