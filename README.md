@@ -29,15 +29,24 @@ memebers name
 1. Project Name
 
 Fitihaber Ethiopia
+
+
+
 2. Sector / Industry
 
 Legal Technology (LawTech) — specializing in digital lawyer-client collaboration, witness (tekesash) and guarantor (kesash) integration, online legal consultancy, and case management.
+
+
 3. Executive Summary
 
 Fitihaber Ethiopia is a modern legal-tech platform designed to connect lawyers, witnesses, and guarantors in a secure and efficient online environment. The platform allows users to chat, schedule consultations, share legal documents, and manage payments all in one place.
 
 Built with a scalable microservices architecture, it leverages React with Vite for a fast, responsive frontend, Node.js with Express for a robust backend, and PostgreSQL for secure relational data management. The system also supports real-time features like video calls (WebRTC) and instant messaging (Socket.IO), ensuring a seamless experience for legal professionals and clients.
+
+
+
 4. Problem Statement
+
 
 In Ethiopia and many other regions, the legal process is often slow, paper-based, and difficult to coordinate. Lawyers, witnesses, and guarantors often face challenges in:
 
@@ -50,7 +59,12 @@ In Ethiopia and many other regions, the legal process is often slow, paper-based
     Coordinating for case timelines and legal proceedings
 
 This leads to delays, miscommunication, and reduced trust in the legal process.
+
+
+
 5. Solution
+
+   
 
 Fitihaber Ethiopia solves this by creating a centralized, secure, and user-friendly platform where:
 
@@ -63,7 +77,11 @@ Fitihaber Ethiopia solves this by creating a centralized, secure, and user-frien
     Legal documents are stored in encrypted cloud storage with strict access controls.
 
 The microservices approach ensures scalability, fault isolation, and independent deployment for features like chat, payments, and file handling.
+
+
+
 6. Objectives / Mission
+   
 
     Digitalize the connection between lawyers, witnesses, and guarantors.
 
@@ -73,7 +91,8 @@ The microservices approach ensures scalability, fault isolation, and independent
 
     Provide access to legal services for remote users.
 
-    Ensure compliance with Ethiopian legal and data protection standards.
+    Ensure compliance with Ethiopian legal and data protection standards
+    
 
 7. Target Audience / Beneficiaries
 
