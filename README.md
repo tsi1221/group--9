@@ -18,49 +18,115 @@ memebers name
 
 
 
-🔥 INSA Summer Camp 2025 - Group 9  Welcome to Group 9’s official repository for the INSA Summer Camp 2025! We’re a team of four passionate students from INSA, working together to build a creative, impactful, and technically strong project. Stay tuned for updates as we bring our vision to life! 🚀
+🔥 INSA Summer Camp 2025 - Group 9  Welcome to Group 9’s official repository for the INSA Summer Camp 2025! We’re a team of four passionate students from INSA, working together to build a creative, impactful, and technically strong project. Stay tuned for updates as we bring our vision to life! 
 
-//// TITLE- EquityLite Ethiopia
+//// TITLE- Fitihaber Ethiopia
 
-1. Problems Addressed
 
-The primary problem EquityLite Ethiopia aims to solve is the informal and unstructured nature of startup funding in Ethiopia. Historically, early-stage investment in the country has relied heavily on personal trust, verbal agreements, and a lack of documented transactions. This informality creates several challenges:
-•Funding Gap: Startups, especially those outside major cities, struggle to access structured and reliable investment channels.
-•Lack of Formalization: The absence of formal processes hinders startups from becoming legally investable entities, limiting their growth potential.
-•Investor Risk: Investors face significant risks due to a lack of transparency, accountability, and formal protections for their investments.
-•Limited Access to Capital: Both local and diaspora investors find it difficult to identify and securely invest in promising Ethiopian startups.
 
-2. Solutions Provided
 
-•EquityLite Ethiopia offers a comprehensive digital solution to formalize and streamline startup investment. It provides a secure online platform that connects Ethiopian startups with local and diaspora investors, offering:
-•Digital Crowdfunding Platform: A centralized hub for startups to present verified business ideas and for investors to contribute funds.
-•Equity or Profit-Sharing Models: Facilitates investments where investors receive clear equity stakes or profit-sharing agreements, moving beyond donation-based models.
-•Digital Contracts and Milestone Tracking: Ensures accountability and trust through legally binding digital contracts and incremental fund release based on pre-defined operational or developmental milestones.
-•e-KYC and Due Diligence: Implements robust verification processes for both startups and investors, enhancing security and reducing fraud.
-•Investor-Startup Matching Algorithm: Intelligently connects suitable investors with startups based on shared interests and investment criteria.
 
-3. What Makes EquityLite Ethiopia Unique
+1. Project Name
 
-•EquityLite Ethiopia distinguishes itself from existing informal funding methods and other crowdfunding platforms (like WegenFund, which focuses on donation/reward-based models) through several key unique selling propositions:
-•Investor-Oriented Approach: Unlike platforms for supporters or fans, EquityLite is designed for serious investors seeking financial returns or equity ownership.
-•Formal Startup Growth Support: It actively helps formalize and scale Ethiopian startups by integrating contracts, milestone tracking, and structured capital allocation, guiding them towards becoming investable legal entities.
-•Milestone & Risk Management: The milestone-based payment system ensures accountability and significantly mitigates investor risk by releasing funds incrementally upon achievement of pre-defined goals.
-•Regulatory-Ready Design: The platform is built with an eye towards future fintech and capital investment laws, positioning it to attract banks and legal backers.
-•Built-in Monetization Ecosystem: It incorporates diverse revenue streams from its inception, ensuring sustainability.
-•Designed for Diaspora Angel Network: Specifically engineered to enable local founders to pitch to a global network of Ethiopian diaspora investors, facilitating cross-border private investment.
-•Low Local Competition: The Ethiopian market currently lacks formal startup crowdfunding platforms, giving EquityLite a significant first-mover advantage.
+Fitihaber Ethiopia
 
-4. How EquityLite Ethiopia Generates Income
 
-EquityLite Ethiopia employs a multi-faceted and sustainable revenue model:
 
-1.Transaction Commission: A commission of 2-5% is charged on each successful investment or funding deal processed through the platform.
+2. Sector / Industry
 
-2.Startup Premium Profiles: Startups can pay for premium listings that offer enhanced visibility, video pitch slots, and detailed analytics.
+Legal Technology (LawTech) — specializing in digital lawyer-client collaboration, witness (tekesash) and guarantor (kesash) integration, online legal consultancy, and case management.
 
-3.Investor Subscription: Vetted investors can subscribe to monthly or annual premium plans for access to exclusive features, market insights, and advanced analytics.
 
-4.Business Verification Service: An optional due diligence and background check service is offered for a fee, providing comprehensive reports to investors.
+3. Executive Summary
+
+Fitihaber Ethiopia is a modern legal-tech platform designed to connect lawyers, witnesses, and guarantors in a secure and efficient online environment. The platform allows users to chat, schedule consultations, share legal documents, and manage payments all in one place.
+
+Built with a scalable microservices architecture, it leverages React with Vite for a fast, responsive frontend, Node.js with Express for a robust backend, and PostgreSQL for secure relational data management. The system also supports real-time features like video calls (WebRTC) and instant messaging (Socket.IO), ensuring a seamless experience for legal professionals and clients.
+
+
+
+4. Problem Statement
+
+
+In Ethiopia and many other regions, the legal process is often slow, paper-based, and difficult to coordinate. Lawyers, witnesses, and guarantors often face challenges in:
+
+    Scheduling and communication
+
+    Securely exchanging documents
+
+    Tracking payments and agreements
+
+    Coordinating for case timelines and legal proceedings
+
+This leads to delays, miscommunication, and reduced trust in the legal process.
+
+
+
+5. Solution
+
+   
+
+Fitihaber Ethiopia solves this by creating a centralized, secure, and user-friendly platform where:
+
+    Lawyers can manage clients, schedule consultations, and handle payments.
+
+    Witnesses (Tekesash) and Guarantors (Kesash) can securely participate in the legal process, verify agreements, and communicate directly with lawyers.
+
+    All parties can use integrated chat, video calls, and calendars to stay on track.
+
+    Legal documents are stored in encrypted cloud storage with strict access controls.
+
+The microservices approach ensures scalability, fault isolation, and independent deployment for features like chat, payments, and file handling.
+
+
+
+6. Objectives / Mission
+   
+
+    Digitalize the connection between lawyers, witnesses, and guarantors.
+
+    Enhance trust through secure, verified communications.
+
+    Speed up legal case processing with online scheduling and payments.
+
+    Provide access to legal services for remote users.
+
+    Ensure compliance with Ethiopian legal and data protection standards
+    
+
+7. Target Audience / Beneficiaries
+
+    Lawyers & Law Firms — streamline case management and client communication.
+
+    Witnesses (Tekesash) — easily confirm agreements and participate remotely.
+
+    Guarantors (Kesash) — securely verify legal commitments and track obligations.
+
+    General Public — access legal help without geographical limitations.
+
+    Courts & Legal Authorities — benefit from organized and digital-ready case records.
+
+8. System Architecture Overview
+
+    Frontend: React with Vite → fast HMR, optimized build, responsive UI.
+
+    Backend: Node.js with Express → asynchronous, scalable, API-driven.
+
+    Database: PostgreSQL → secure relational data handling with JSONB support.
+
+    Microservices:
+
+        Auth Service → registration/login, role-based access (lawyer, tekesash, kesash).
+
+        Chat & Communication Service → real-time messaging (Socket.IO), video calls (WebRTC).
+
+        Calendar Service → event scheduling, reminders, court dates.
+
+        Payment Service → online payments, receipts, status tracking.
+
+        Document Service → encrypted uploads, version tracking, access permissions.
+
+    DevOps: Docker, Kubernetes, CI/CD, CDN for global content delivery.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -68,5 +134,5 @@ EquityLite Ethiopia employs a multi-faceted and sustainable revenue model:
 Setup:
 Run npm install in both frontend and backend folders.
 Start frontend: npm run dev (http://localhost:5173/)
-Start backend: npx nodemon server.js (http://localhost:5000/)
+Start backend: npx nodemon server.js (http://localhost:3000/)
 docker run postgres:15-alpine
