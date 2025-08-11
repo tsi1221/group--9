@@ -15,12 +15,18 @@ const createUser = async (userData) => {
   return result.rows[0];
 };
 
-const getUserByEmail = async (email) => {
-  const result = await pool.query(`SELECT * FROM users WHERE email = $1`, [email]);
+const getUserByEmailOrPhone = async (emailorPhone) => {
+  const result = await pool.query(
+    `SELECT * FROM users WHERE email = $1 OR phone = $1`,
+    [emailorPhone]
+  );
   return result.rows[0];
 };
 
+
+
+
 module.exports = {
   createUser,
-  getUserByEmail,
+  getUserByEmailOrPhone,
 };
