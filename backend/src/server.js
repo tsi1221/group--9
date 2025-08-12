@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 require('dotenv').config();
 const cors = require('cors');
 const app = express();
+
 const authRoutes = require('./routes/authRoutes');
 // const socialRoutes = require('./routes/socialRoutes');
 const profileRoutes = require('./routes/profileRoutes');
