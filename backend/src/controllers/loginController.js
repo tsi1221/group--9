@@ -4,11 +4,11 @@ const { getUserByEmailOrPhone } = require('../models/userModel');
 require('dotenv').config();
 
 const login = async (req, res) => {
-  const { emailorPhone, password } = req.body;
+  const { identifier, password } = req.body;
 
   try {
     // Find user by email or phone
-    const user = await getUserByEmailOrPhone(emailorPhone);
+    const user = await getUserByEmailOrPhone(identifier);
 
     if (!user || user.provider !== 'local') {
       return res.status(400).json({ message: 'Invalid email/phone or login method' });

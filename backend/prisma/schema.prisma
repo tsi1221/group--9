@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Role {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(50) @unique
+
+  users User[]
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  firstname   String    @db.VarChar(50)
+  middlename  String    @db.VarChar(50)
+  lastname    String    @db.VarChar(50)
+  email       String    @unique @db.VarChar(100)
+  phone       String    @unique @db.VarChar(15)
+  password    String    @db.VarChar(100)
+  address     String    @db.VarChar(255)
+  provider    String    @db.VarChar(50)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  roleId      Int
+  role        Role      @relation(fields: [roleId], references: [id], onDelete: NoAction)
+
+  clientCases Case[]    @relation("ClientCases")
+  lawyerCases Case[]    @relation("LawyerCases")
+}
+
+model Case {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(100)
+  category   String   @db.VarChar(25)
+
+  clientId   Int
+  client     User     @relation("ClientCases", fields: [clientId], references: [id], onDelete: Cascade)
+
+  lawyerId   Int
+  lawyer     User     @relation("LawyerCases", fields: [lawyerId], references: [id], onDelete: Cascade)
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

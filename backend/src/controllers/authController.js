@@ -8,14 +8,14 @@ require('dotenv').config();
 const register = async (req, res) => {
   const {
     role, firstname, middlename, lastname,
-    email, password, phone, provider = 'local'
+    email, password,address, phone, provider = 'local',roleId
   } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await createUser({
       role, firstname, middlename, lastname,
-      email, password: hashedPassword, phone, provider
+      email, password: hashedPassword, address,phone, provider,roleId
     });
 
     const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, {
