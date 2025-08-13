@@ -1,22 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const profileMiddleware = require('../middlewares/authMiddleware');
-const roleMiddleware = require('../middlewares/roleMiddleware');
-const { getProfile, adminDashboard, lawyerDashboard, userDashboard } = require('../controllers/profileController');
-
-// All roles can access profile
-router.get('/api/auth/profile', profileMiddleware, getProfile);
+const profileMiddleware = require('../middleware/profileMiddleware'); // corrected
+const roleMiddleware = require('../middleware/roleMiddleware');
+const { adminDashboard, lawyerDashboard, userDashboard } = require('../controllers/roleControler');
 
 // Only admin can access admin dashboard
-router.get('/api/admin/dashboard', profileMiddleware, roleMiddleware('admin'), adminDashboard);
+router.get('/admin/dashboard', profileMiddleware, roleMiddleware('admin,user,lawyer'), adminDashboard);
 
 // Only lawyer can access lawyer dashboard
-router.get('/api/lawyer/dashboard', roleMiddleware, roleMiddleware('lawyer'), lawyerDashboard);
+router.get('/lawyer/dashboard', profileMiddleware, roleMiddleware('lawyer'), lawyerDashboard);
 
 // Only normal users can access user dashboard
-router.get('/api/user/dashboard', roleMiddleware, roleMiddleware('user'), userDashboard);
+router.get('/user/dashboard', profileMiddleware, roleMiddleware('user'), userDashboard);
 
-// If multiple roles allowed (e.g. admin and lawyer)
-router.get('/api/special', roleMiddleware, roleMiddleware('admin', 'lawyer'), (req, res) => {
-  res.send('Special access for admins and lawyers');
-});
+module.exports = router;

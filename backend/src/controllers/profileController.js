@@ -1,3 +1,3 @@
 exports.getProfile = (req, res) => {
-  res.json(req.user);
+  res.json({ user: req.user });
 };

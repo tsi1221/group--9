@@ -7,6 +7,8 @@ const cors = require('cors');
 const app = express();
 
 const authRoutes = require('./routes/authRoutes');
+
+const roleRoutes = require('./routes/roleRoutes');
 // const socialRoutes = require('./routes/socialRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 app.use(cors());
@@ -18,6 +20,7 @@ app.use(passport.initialize());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', profileRoutes);
+app.use('/api/roles', roleRoutes);
 // app.use('/api/social', socialRoutes);
 
 const PORT = process.env.PORT || 3000;
