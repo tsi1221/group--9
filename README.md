@@ -129,7 +129,8 @@ The microservices approach ensures scalability, fault isolation, and independent
         Document Service → encrypted uploads, version tracking, access permissions.
 
     DevOps: Docker, Kubernetes, CI/CD, CDN for global content delivery.
->>>>>>> 982527e1a471af2ba0de9b3b060a9f1f4e891e3a
+
+   and we will make mulitlingual platform
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------
