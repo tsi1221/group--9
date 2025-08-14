@@ -18,7 +18,7 @@ Sector / Industry: Legal Technology (LawTech)
 
 Executive Summary:
 Fitihaber Ethiopia is a modern, secure platform for lawyers, witnesses (Tekesash), and guarantors (Kesash) to communicate, schedule consultations, exchange documents, and track case progress. Built with a microservices architecture, the platform ensures scalability, security, and a seamless user experience.
-
+and we make it muliti lingual local languge we use it there
 Tech Stack:
 
     Frontend: React + Vite (fast HMR, responsive UI)
