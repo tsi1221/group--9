@@ -32,6 +32,7 @@ model User {
 
   clientCases Case[]    @relation("ClientCases")
   lawyerCases Case[]    @relation("LawyerCases")
+  passwordResetTokens PasswordResetToken[]
 }
 
 model Case {
@@ -47,4 +48,15 @@ model Case {
 
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+}
+
+model PasswordResetToken {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
 }

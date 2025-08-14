@@ -31,3 +31,4 @@ npx prisma megirate dev
 git reset HEAD~1
 
 npx prisma migrate dev --name init
+http://localhost/pgadmin4/browser/

@@ -1,4 +1,5 @@
 const { check, validationResult } = require('express-validator');
+const { z } = require('zod');
 
 const registrationValidationRules = [
   check('firstname')
@@ -46,6 +47,15 @@ const validate = (req, res, next) => {
   if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
   next();
 };
+
+
+exports.emailSchema = z.object({
+  email: z.string().email("Invalid email format")
+});
+
+exports.passwordSchema = z.object({
+  password: z.string().min(8, "Password must be at least 8 characters")
+});
 
 module.exports = {
   registrationValidationRules,
