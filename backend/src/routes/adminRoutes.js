@@ -4,20 +4,21 @@ const profileMiddleware = require('../middleware/profileMiddleware');
 const roleMiddleware = require('../middleware/roleMiddleware');
 const adminController = require('../controllers/adminController');
 
-// Admin metrics
+// Admin dashboard metrics
 router.get('/dashboard', profileMiddleware, roleMiddleware('ADMIN'), adminController.adminDashboard);
 
-// List users/lawyers
+// CRUD for users/lawyers
+router.post('/create', profileMiddleware, roleMiddleware('ADMIN'), adminController.createUserOrLawyer);
 router.get('/users', profileMiddleware, roleMiddleware('ADMIN'), adminController.getAllUsers);
 router.get('/lawyers', profileMiddleware, roleMiddleware('ADMIN'), adminController.getAllLawyers);
+router.get('/:id', profileMiddleware, roleMiddleware('ADMIN'), adminController.getUserOrLawyerById);
+router.put('/:id', profileMiddleware, roleMiddleware('ADMIN'), adminController.updateUserOrLawyer);
+router.delete('/:id', profileMiddleware, roleMiddleware('ADMIN'), adminController.deleteUserOrLawyer);
 
-// CRUD for users
-router.get('/users/:id', profileMiddleware, roleMiddleware('ADMIN'), adminController.getUserById);
-router.put('/users/:id', profileMiddleware, roleMiddleware('ADMIN'), adminController.updateUser);
-router.delete('/users/:id', profileMiddleware, roleMiddleware('ADMIN'), adminController.deleteUser);
-
-// Search
+// Search users/lawyers
 router.get('/search/users', profileMiddleware, roleMiddleware('ADMIN'), adminController.searchUsersByName);
+
+// Search cases
 router.get('/search/cases', profileMiddleware, roleMiddleware('ADMIN'), adminController.searchCases);
 
 module.exports = router;

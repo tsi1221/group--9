@@ -1,6 +1,8 @@
 const prisma = require('../../config/prisma');
+const bcrypt = require('bcryptjs');
 
-// Admin dashboard metrics
+// -------------------- ADMIN DASHBOARD -------------------- //
+
 exports.adminDashboard = async (req, res) => {
   try {
     const totalUsers = await prisma.user.count({ where: { role: { name: 'CLIENT' } } });
@@ -27,66 +29,156 @@ exports.adminDashboard = async (req, res) => {
   }
 };
 
+// -------------------- USERS & LAWYERS CRUD -------------------- //
+
 // List all users
 exports.getAllUsers = async (req, res) => {
-  const users = await prisma.user.findMany({ where: { role: { name: 'CLIENT' } } });
-  res.json(users);
+  try {
+    const users = await prisma.user.findMany({ where: { role: { name: 'CLIENT' } } });
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 };
 
 // List all lawyers
 exports.getAllLawyers = async (req, res) => {
-  const lawyers = await prisma.user.findMany({ where: { role: { name: 'LAWYER' } } });
-  res.json(lawyers);
+  try {
+    const lawyers = await prisma.user.findMany({ where: { role: { name: 'LAWYER' } } });
+    res.json(lawyers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 };
 
-// CRUD: Get user by ID
-exports.getUserById = async (req, res) => {
-  const { id } = req.params;
-  const user = await prisma.user.findUnique({ where: { id: Number(id) } });
-  res.json(user);
+// Get user/lawyer by ID
+exports.getUserOrLawyerById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await prisma.user.findUnique({ where: { id: Number(id) } });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 };
 
-// CRUD: Update user
-exports.updateUser = async (req, res) => {
-  const { id } = req.params;
-  const updatedUser = await prisma.user.update({
-    where: { id: Number(id) },
-    data: req.body,
-  });
-  res.json(updatedUser);
+// Create new user/lawyer
+exports.createUserOrLawyer = async (req, res) => {
+  try {
+    const { firstname, middlename, lastname, email, password, role, phone, address, roleId } = req.body;
+
+    // Validate role
+    if (!['CLIENT', 'LAWYER'].includes(role)) {
+      return res.status(400).json({ message: 'Invalid role' });
+    }
+
+    // Check required fields
+    if (!firstname || !middlename || !lastname || !email || !password || !phone || !address || !roleId) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create user
+    const user = await prisma.user.create({
+      data: {
+        firstname,
+        middlename,
+        lastname,
+        email,
+        password: hashedPassword,
+        role,    // must match enum values exactly: CLIENT / LAWYER / ADMIN
+        phone,
+        address,
+        roleId,
+      },
+    });
+
+    res.status(201).json({ message: `${role} created successfully`, user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
 };
 
-// CRUD: Delete user
-exports.deleteUser = async (req, res) => {
-  const { id } = req.params;
-  await prisma.user.delete({ where: { id: Number(id) } });
-  res.json({ message: 'User deleted successfully' });
+
+// Update user/lawyer
+exports.updateUserOrLawyer = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, password, role } = req.body;
+
+    const data = {};
+    if (name) data.name = name;
+    if (email) data.email = email;
+    if (password) data.password = await bcrypt.hash(password, 10);
+    if (role && ['CLIENT', 'LAWYER'].includes(role)) data.role = role;
+
+    const updatedUser = await prisma.user.update({
+      where: { id: Number(id) },
+      data,
+    });
+
+    res.json({ message: 'Updated successfully', updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 };
 
-// Search users by name
+// Delete user/lawyer
+exports.deleteUserOrLawyer = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await prisma.user.delete({ where: { id: Number(id) } });
+    res.json({ message: 'Deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+// -------------------- SEARCH -------------------- //
+
+// Search users/lawyers by name
 exports.searchUsersByName = async (req, res) => {
-  const { name } = req.query;
-  const users = await prisma.user.findMany({
-    where: {
-      AND: [
-        { role: { name: 'CLIENT' } }, 
-        { firstname: { contains: name, mode: 'insensitive' } }
-      ],
-    },
-  });
-  res.json(users);
+  try {
+    const { name } = req.query;
+    const users = await prisma.user.findMany({
+      where: {
+        AND: [
+          { role: { name: 'CLIENT' } }, 
+          { name: { contains: name, mode: 'insensitive' } }
+        ],
+      },
+    });
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 };
 
-// Search cases by status and title
+// Search cases by status and name
 exports.searchCases = async (req, res) => {
-  const { status, caseName } = req.query;
-  const cases = await prisma.case.findMany({
-    where: {
-      AND: [
-        status ? { status } : {},
-        caseName ? { name: { contains: caseName, mode: 'insensitive' } } : {},
-      ],
-    },
-  });
-  res.json(cases);
+  try {
+    const { status, caseName } = req.query;
+    const cases = await prisma.case.findMany({
+      where: {
+        AND: [
+          status ? { status } : {},
+          caseName ? { name: { contains: caseName, mode: 'insensitive' } } : {},
+        ],
+      },
+    });
+    res.json(cases);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 };
