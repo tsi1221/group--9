@@ -1,15 +1,17 @@
 version: '3.9'
+
 services:
   db:
     image: postgres:15-alpine
-    environment:
-      POSTGRES_USER: equityadmin
-      POSTGRES_PASSWORD: insasummercamp4
-      POSTGRES_DB: equitylite
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    restart: always
     ports:
-      - "5434:5432"
+      - "5434:5433"  # Standard Postgres port
+    environment:
+      POSTGRES_USER: tsehayneshbiruh2
+      POSTGRES_PASSWORD: tsehayteam
+      POSTGRES_DB: Fithaber
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - equity-network
 
@@ -19,14 +21,8 @@ services:
       - ./backend:/app
       - /app/node_modules
     ports:
-      - "3000:3000"
+      - "3001:3000"
     command: npx nodemon server.js
-    environment:
-      DB_HOST: db
-      DB_PORT: 5433
-      DB_USER: equityadmin
-      DB_PASSWORD: insasummercamp4
-      DB_NAME: equitylite
     depends_on:
       - db
     networks:
@@ -46,8 +42,8 @@ services:
       - equity-network
 
 volumes:
-  pgdata:
+  postgres_data:
 
 networks:
   equity-network:
-    driver:  bridge
+    driver: bridge

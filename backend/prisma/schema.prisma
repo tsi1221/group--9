@@ -1,0 +1,182 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+///////////////////////
+// ENUM DEFINITIONS //
+///////////////////////
+
+enum RoleEnum {
+  ADMIN
+  LAWYER
+  CLIENT
+}
+
+enum CaseStatus {
+  OPEN
+  PENDING
+  CLOSED
+  ARCHIVED
+}
+
+enum DocumentType {
+  EVIDENCE
+  CONTRACT
+  REPORT
+  OTHER
+}
+
+enum PaymentGateway {
+  TELEBIRR
+  CHAPA
+  PAYPAL
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+///////////////////////
+// CORE MODELS       //
+///////////////////////
+
+model Role {
+  id    Int      @id @default(autoincrement())
+  name  RoleEnum @unique
+
+  users User[]
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  firstname   String    @db.VarChar(50)
+  middlename  String    @db.VarChar(50)
+  lastname    String    @db.VarChar(50)
+  email       String    @unique @db.VarChar(100)
+  phone       String    @unique @db.VarChar(15)
+  password    String    @db.VarChar(100)
+  address     String    @db.VarChar(255)
+  provider    String    @db.VarChar(50)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  roleId      Int
+  role        Role      @relation(fields: [roleId], references: [id], onDelete: NoAction)
+
+  clientCases Case[]    @relation("ClientCases")
+  lawyerCases Case[]    @relation("LawyerCases")
+  passwordResetTokens PasswordResetToken[]
+  documents   Document[] @relation("UserDocuments")
+  payments    Payment[]  @relation("UserPayments")
+  participants Participant[]
+  auditLogs   AuditLog[]
+}
+
+model PasswordResetToken {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+}
+
+///////////////////////
+// CASE MANAGEMENT   //
+///////////////////////
+
+model Case {
+  id          Int          @id @default(autoincrement())
+  name        String       @db.VarChar(100)
+  category    String       @db.VarChar(25)
+  status      CaseStatus   @default(OPEN)
+
+  clientId    Int
+  client      User         @relation("ClientCases", fields: [clientId], references: [id], onDelete: Cascade)
+
+  lawyerId    Int
+  lawyer      User         @relation("LawyerCases", fields: [lawyerId], references: [id], onDelete: Cascade)
+
+  participants Participant[]
+  documents    Document[]
+  payments     Payment[]
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([lawyerId, status])
+  @@index([clientId, status])
+  @@index([createdAt])
+}
+
+model Participant {
+  id       Int      @id @default(autoincrement())
+  caseId   Int
+  userId   Int
+  role     String   @db.VarChar(50) // e.g., Witness, Guarantor
+
+  case     Case     @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([caseId])
+  @@index([userId])
+}
+
+model Document {
+  id        Int           @id @default(autoincrement())
+  title     String        @db.VarChar(100)
+  type      DocumentType
+  url       String        @db.VarChar(255)
+  caseId    Int
+  uploadedBy Int
+  access    String        @db.VarChar(50) // public, private, lawyer-only
+
+  case      Case          @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  uploader  User          @relation("UserDocuments", fields: [uploadedBy], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([caseId])
+  @@index([uploadedBy])
+}
+
+model Payment {
+  id        Int           @id @default(autoincrement())
+  caseId    Int
+  amount    Float
+  gateway   PaymentGateway
+  status    PaymentStatus @default(PENDING)
+  paidById  Int
+
+  case      Case          @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  paidBy    User          @relation("UserPayments", fields: [paidById], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+
+  @@index([caseId])
+  @@index([paidById])
+  @@index([status])
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  userid    Int
+  action    String   @db.VarChar(255)
+  entity    String   @db.VarChar(50)
+  entityId  Int
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userid], references: [id])
+  
+  @@index([userid])
+  @@index([entity, entityId])
+}
