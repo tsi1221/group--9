@@ -1,0 +1,98 @@
+.navbar {
+  background: #0B1F3A;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  z-index: 10;
+  border-bottom: 1px solid #1E293B;
+  position: sticky;
+  top: 0;
+  flex-wrap: wrap; 
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo .logo {
+  width: 35px;
+}
+
+.eq {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  flex: 1;
+  justify-content: center; 
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #FBBF24;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #FBBF24;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a.active {
+  color: #3B82F6;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+  background-color: #3B82F6;
+}
+
+.btn {
+  padding: 8px 18px;
+  background-color: #2563EB;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: auto;
+}
+
+.btn:hover {
+  background-color: #1E40AF;
+  transform: scale(1.05);
+}
+
+
