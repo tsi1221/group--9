@@ -11,7 +11,7 @@ const register = async (req, res) => {
     email, password,address, phone, provider = 'local',roleId
   } = req.body;
 
-
+  
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
