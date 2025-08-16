@@ -15,7 +15,10 @@
     "prisma": "^6.13.0"
   },
   "dependencies": {
+    "@adminjs/express": "^6.1.1",
+    "@adminjs/prisma": "^5.0.4",
     "@prisma/client": "^6.13.0",
+    "adminjs": "^7.8.17",
     "argon2": "^0.44.0",
     "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",

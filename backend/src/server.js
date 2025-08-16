@@ -3,9 +3,6 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 // const passport = require('passport');
 const cors = require('cors');
-
-const app = express();
-
 // Correctly require all route files
 const logOutRoutes = require('./routes/logOutRoutes');
 const authRoutes = require('./routes/authRoutes');
@@ -14,6 +11,10 @@ const roleRoutes = require('./routes/roleRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const passwordResetRoutes = require ('./routes/passwordResetRoutes');
 
+
+//
+
+const app = express();
 // Middlewares
 app.use(cors());
 app.use(cookieParser());
