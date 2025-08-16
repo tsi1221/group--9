@@ -1,6 +1,6 @@
 // src/controllers/authController.js
 const jwt = require('jsonwebtoken');
-// const { addToken } = require('../services/tokenBlacklist');
+const { addToken } = require('../services/tokenBlacklist');
 
 const logout = (req, res) => {
   try {

@@ -3,19 +3,20 @@ const prisma = require('../config/prisma'); // adjust path if needed
 async function seedRoles() {
   await prisma.role.createMany({
     data: [
-      { name: 'admin' },
-      { name: 'user' },
-      { name: 'lawyer' }
+      { name: "ADMIN" },
+      { name: "CLIENT" },
+      { name: "LAWYER" }
     ],
     skipDuplicates: true,
   });
-  console.log('Roles seeded');
 }
 
 seedRoles()
-  .catch(e => {
-    console.error(e);
+  .then(() => {
+    console.log("Roles seeded successfully 🚀");
+    process.exit(0);
   })
-  .finally(async () => {
-    await prisma.$disconnect();
+  .catch((e) => {
+    console.error("Error seeding roles:", e);
+    process.exit(1);
   });

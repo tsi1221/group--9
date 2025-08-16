@@ -32,3 +32,10 @@ git reset HEAD~1
 
 npx prisma migrate dev --name init
 http://localhost/pgadmin4/browser/
+
+
+Admin dashboard metrics (total users, lawyers, open cases, payments this month)
+
+CRUD for users, lawyers, cases
+
+Search by name, case, status

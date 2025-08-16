@@ -1,6 +1,5 @@
-// src/middlewares/authMiddleware.js
 const jwt = require('jsonwebtoken');
-const prisma = require('../../generated/prisma');
+const prisma = require('../../config/prisma'); // correct import
 
 const logoutMiddleware = async (req, res, next) => {
   try {
@@ -12,7 +11,7 @@ const logoutMiddleware = async (req, res, next) => {
     const token = authHeader.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
       where: { id: decoded.id },
       select: { id: true, firstname: true, role: { select: { name: true } } }
     });
@@ -22,13 +21,14 @@ const logoutMiddleware = async (req, res, next) => {
     req.user = {
       id: user.id,
       firstname: user.firstname,
-      role: user.role.name
+      role: user.role?.name || null
     };
 
     next();
   } catch (err) {
+    console.error("JWT Verify Error:", err.message);
     return res.status(401).json({ message: 'Invalid token' });
   }
 };
 
-module.exports =logoutMiddleware;
+module.exports = logoutMiddleware;

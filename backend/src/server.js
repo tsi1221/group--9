@@ -27,6 +27,7 @@ app.use('/api/profile', logOutRoutes);
 app.use('/api/users', profileRoutes);
 app.use('/api/roles', roleRoutes);
 app.use('/api/password-reset', passwordResetRoutes);
+app.use('/admin', require('./routes/adminRoutes'));
 // app.use('/api/social', socialRoutes);
 
 // Start server
