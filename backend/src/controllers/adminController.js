@@ -29,6 +29,33 @@ exports.adminDashboard = async (req, res) => {
   }
 };
 
+
+
+// Update Admin's own profile
+exports.updateSelf = async (req, res) => {
+  try {
+    const adminId = req.user.id; // from JWT middleware
+    const { firstname, middlename, lastname, email, address, phone } = req.body;
+
+    const updatedAdmin = await prisma.user.update({
+      where: { id: adminId },
+      data: {
+        firstname,
+        middlename,
+        lastname,
+        email,
+        address,
+        phone,
+      },
+    });
+
+    res.json({ message: "Admin profile updated successfully", admin: updatedAdmin });
+  } catch (error) {
+    console.error("Error updating admin profile:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 // -------------------- USERS & LAWYERS CRUD -------------------- //
 
 // List all users

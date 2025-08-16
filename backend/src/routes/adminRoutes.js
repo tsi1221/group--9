@@ -6,6 +6,9 @@ const adminController = require('../controllers/adminController');
 
 // Admin dashboard metrics
 router.get('/dashboard', profileMiddleware, roleMiddleware('ADMIN'), adminController.adminDashboard);
+// Update own profile
+router.put("/profile",profileMiddleware,roleMiddleware("ADMIN"),adminController.updateSelf
+);
 
 // CRUD for users/lawyers
 router.post('/create', profileMiddleware, roleMiddleware('ADMIN'), adminController.createUserOrLawyer);
