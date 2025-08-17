@@ -1,27 +1,36 @@
+/* 🌟 Container */
 .container1 {
-  max-width: 1200px;
+  width: 90%;                /* default width relative to viewport */
+  max-width: 1200px;         /* upper limit for large screens */
+  min-width: 320px;           /* lower limit for small devices */
   margin: 0 auto;
   padding: 40px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #1a1a1a;
-  background-color: #f0f8ff;
+  background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+  box-sizing: border-box;    /* ensures padding included in width */
 }
 
+/* Headings */
 .container1 h1 {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 4vw, 2.8rem); /* fluid font scaling */
   margin-bottom: 40px;
   color: #007BFF; 
 }
 
+/* Contact Wrapper */
 .contact-wrapper {
   display: flex;
   gap: 40px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
+  margin-bottom: 8rem;
 }
 
+/* Left Column */
 .left {
   flex: 1 1 350px;
   display: flex;
@@ -29,29 +38,30 @@
   gap: 25px;
 }
 
+/* Box Styles */
 .box {
   background-color: #ffffff; 
-  padding: 20px;
-  border-radius: 10px;
+  padding: 25px;
+  border-radius: 12px;
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 8px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(1, 9, 75, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(1, 9, 75, 0.2);
 }
 
 .box h2 {
   display: flex;
   align-items: center;
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+  font-size: 1.35rem;
+  margin-bottom: 12px;
   color: #070c13;
 }
 
 .box h2 svg {
-  margin-right: 10px;
+  margin-right: 12px;
   color: #1c1e20;
 }
 
@@ -70,6 +80,7 @@
   text-decoration: underline;
 }
 
+/* Right Column */
 .right {
   flex: 2 1 500px;
   min-height: 400px;
@@ -82,6 +93,13 @@
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .container1 {
+    width: 95%;
+  }
 }
 
 @media (max-width: 992px) {
@@ -100,7 +118,8 @@
 
 @media (max-width: 576px) {
   .container1 {
-    padding: 20px 10px;
+    width: 100%;
+    padding: 25px 15px;
   }
 
   .box h2 {

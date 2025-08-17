@@ -1,102 +1,132 @@
-.signin-container {
-  max-width: 380px;
-  margin: 80px auto;
-  padding: 30px;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  font-family: 'Segoe UI', Arial, sans-serif;
+/* Global reset for smoother rendering */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* Container */
+.signin-container {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 35px 30px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.signin-container:hover {
+  transform: translateY(-4px);
+}
+
+/* Heading */
 .signin-container h2 {
   text-align: center;
   margin-bottom: 25px;
-  font-size: 1.8rem;
-  color: #333;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #2d2d2d;
 }
 
+/* Form */
 .signin-form {
   display: flex;
   flex-direction: column;
-  padding-right: 25px;
 }
 
+/* Input fields */
 .signin-form input {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
   outline: none;
-  margin-bottom: 15px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 18px;
+  background: #fafafa;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s;
 }
 
 .signin-form input:focus {
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
 }
 
+/* Password wrapper with eye */
 .password-wrapper {
   position: relative;
 }
 
 .eye-icon {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
   cursor: pointer;
-  color: #888;
+  color: #777;
+  font-size: 1.1rem;
+  transition: color 0.2s;
 }
 
+.eye-icon:hover {
+  color: #007bff;
+}
+
+/* Forgot password */
 .forgot-password {
   text-align: right;
   font-size: 0.9rem;
   color: #007bff;
   cursor: pointer;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .forgot-password:hover {
   text-decoration: underline;
 }
 
+/* Primary Button */
 .signin-btn {
-  width: 150px;
-  padding: 12px;
-  background-color: #007bff;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
   color: white;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  align-self: center;
+  transition: opacity 0.3s, transform 0.2s;
 }
 
 .signin-btn:hover {
-  background-color: #0056b3;
+  opacity: 0.9;
+  transform: scale(1.02);
 }
 
+/* Social login */
 .social-login {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 35px;
-  margin-bottom: 20px;
-  margin-top: 15px;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
 }
 
 .google-btn, .facebook-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .google-btn {
@@ -109,8 +139,13 @@
   color: white;
 }
 
+.google-btn:hover, .facebook-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Bottom links */
 .signin-links {
-  margin-top: 15px;
+  margin-top: 20px;
   text-align: center;
   cursor: pointer;
   color: #007bff;
@@ -122,3 +157,37 @@
   text-decoration: underline;
 }
 
+/* ----------------------------- */
+/* RESPONSIVE DESIGN */
+/* ----------------------------- */
+@media (max-width: 768px) {
+  .signin-container {
+    margin: 40px 20px;
+    padding: 25px 20px;
+  }
+
+  .signin-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .signin-btn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .google-btn, .facebook-btn {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signin-container {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+
+  .signin-container h2 {
+    font-size: 1.4rem;
+  }
+}

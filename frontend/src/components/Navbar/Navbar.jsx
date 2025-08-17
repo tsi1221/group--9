@@ -6,6 +6,7 @@ import logo from '../../assets/logo1.png';
 const Navbar = () => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -21,9 +22,11 @@ const Navbar = () => {
       setIsAuthenticated(false);
       navigate('/');
     } else {
-      navigate('/signin'); 
+      navigate('/signin');
     }
   };
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
     <nav className="navbar">
@@ -32,17 +35,20 @@ const Navbar = () => {
         <p className="eq">Fithabher</p>
       </Link>
 
-      <div className="nav-links">
+      <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/howitworks">How it works</NavLink>
         <NavLink to="/contact">Contact</NavLink>
         <NavLink to="/about">About</NavLink>
-        {/* <NavLink to="/services">Services</NavLink> */}
       </div>
 
       <button className="btn" onClick={handleAuthToggle}>
-        Login
+        {isAuthenticated ? 'Logout' : 'Login'}
       </button>
+
+      <div className="hamburger" onClick={toggleMenu}>
+        &#9776;
+      </div>
     </nav>
   );
 };

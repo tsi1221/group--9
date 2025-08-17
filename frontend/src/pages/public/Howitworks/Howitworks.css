@@ -1,148 +1,150 @@
-.container {
-  width: 100%;
-  min-height: 100vh;
-  padding: 60px 20px 80px 20px;
-  box-sizing: border-box;
-  background-color: #e6f0ff; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Howitworks.css */
+
+/* Root Variables for colors and fonts */
+:root {
+  --primary-color: #2563eb;       /* blue */
+  --secondary-color: #0643b4;     /* darker blue */
+  --text-color: #1e293b;          /* dark slate gray */
+  --bg-color: #ffffff;             /* white background */
+  --step-bg: #f0f4ff;             /* light step background */
+  --circle-bg: #2563eb;           /* circle color */
+  --circle-text: #ffffff;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Main Container */
+.container {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  margin-bottom:6.6rem;
+}
+
+/* Title Section */
 .txt {
   text-align: center;
-  margin-bottom: 50px;
-  max-width: 800px;
+  margin-bottom: 60px;
 }
 
 .txt h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #007BFF; 
+  font-size: 3rem;
+  color: var(--primary-color);
   margin-bottom: 15px;
+  line-height: 1.2;
 }
 
 .txt p {
-  font-size: 1.25rem;
-  color: #333;
-  line-height: 1.7;
+  font-size: 1.15rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
+/* Steps Grid */
 .steps-grid {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
-  flex-wrap: wrap; 
-  max-width: 1200px;
-  position: relative;
+  align-items: start;
 }
 
+/* Each Step */
 .step-item {
-  flex: 1 1 300px;
-  background-color: #ffffff;
-  padding: 25px 20px;
-  border-radius: 12px;
+  background-color: var(--step-bg);
+  padding: 30px 20px 20px 20px;
+  border-radius: 15px;
   text-align: center;
-  position: relative;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .step-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Step Circle */
 .step-circle {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px auto;
+  background-color: var(--circle-bg);
+  color: var(--circle-text);
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
-  margin: 0 auto 15px;
-  background-color: #2563eb; 
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 50%;
-  position: relative;
-  z-index: 1;
-  transition: background-color 0.3s;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
 }
 
-.step-item:hover .step-circle {
-  background-color: #0c32af; 
-}
-
+/* Step Titles */
 .step-item h3 {
   font-size: 1.5rem;
-  margin-bottom: 12px;
-  font-weight: 600;
-  color: #004080;
+  color: var(--primary-color);
+  margin-bottom: 10px;
 }
 
+/* Step Description */
 .step-item p {
-  font-size: 1.1rem;
-  color: #555;
+  font-size: 1rem;
+  color: var(--text-color);
   line-height: 1.6;
 }
 
-.steps-grid .step-item:last-child::after {
-  display: none;
-}
+/* Responsive Design */
 
-@media (max-width: 1024px) {
+/* Tablets */
+@media (max-width: 992px) {
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
   .txt h1 {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
   }
 
   .txt p {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .step-item h3 {
-    font-size: 1.35rem;
-  }
-
-  .step-item p {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 }
 
-@media (max-width: 768px) {
+/* Mobile */
+@media (max-width: 576px) {
   .steps-grid {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
-  .step-item:not(:last-child)::after {
-    display: none;
+  .txt h1 {
+    font-size: 2.2rem;
+  }
+
+  .txt p {
+    font-size: 1rem;
   }
 
   .step-item {
-    width: 100%;
-    max-width: 450px;
-  }
-}
-
-@media (max-width: 480px) {
-  .txt h1 {
-    font-size: 2rem;
-  }
-
-  .txt p {
-    font-size: 1rem;
+    padding: 25px 15px 15px 15px;
   }
 
   .step-circle {
-    width: 60px;
-    height: 60px;
-    font-size: 1.25rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.1rem;
   }
 
   .step-item h3 {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
 
   .step-item p {

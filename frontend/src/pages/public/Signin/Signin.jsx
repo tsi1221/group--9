@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { FaGoogle, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
 import './Signin.css';
 
@@ -64,9 +65,12 @@ const Signin = () => {
           </div>
         ))}
 
-        <p className="forgot-password" onClick={() => alert('Forgot password flow')}>
-          Forgot Password?
-        </p>
+          <p
+      className="forgot-password"
+      onClick={() => navigate('/forget-password')}
+    >
+      Forgot Password?
+    </p>
 
         <button type="submit" className="signin-btn">Sign In</button>
       </form>

@@ -12,6 +12,7 @@ import Services from './pages/public/Services/Services.jsx';
 import About from './pages/public/About/About.jsx';
 import Signin from './pages/public/Signin/Signin.jsx';
 import Signup from './pages/public/Signup/Signup.jsx';
+import ForgetPassword from './pages/public/Forgetpassword/Forgetpassword.jsx';
 
 import Dashboard from './pages/private/Dashboard/Dashboard.jsx';
 import Calendar from './pages/private/Calendar/Calendar.jsx';
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
       </Route>
 
       {/* Private */}
