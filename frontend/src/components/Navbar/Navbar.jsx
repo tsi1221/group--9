@@ -41,7 +41,7 @@ const Navbar = () => {
       </div>
 
       <button className="btn" onClick={handleAuthToggle}>
-        {isAuthenticated ? 'Logout' : 'Login'}
+        Login
       </button>
     </nav>
   );

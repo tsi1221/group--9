@@ -57,7 +57,7 @@ const App = () => {
       <Route
         element={
           <PrivateRoute>
-            <PrivateLayout />
+            <PrivateLayout/>
           </PrivateRoute>
         }
       >

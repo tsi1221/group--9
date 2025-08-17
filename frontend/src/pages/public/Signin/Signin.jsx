@@ -4,7 +4,7 @@ import { FaGoogle, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
 import './Signin.css';
 
 const Signin = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -77,7 +77,7 @@ const Signin = () => {
       </div>
 
       <p className="signin-links">
-        <a onClick={() => navigate('/signup')}> Don’t have an account? Sign Up</a>
+        <a onClick={() => navigate('/signup')}> Don't have an account? Sign Up</a>
       </p>
     </div>
   );

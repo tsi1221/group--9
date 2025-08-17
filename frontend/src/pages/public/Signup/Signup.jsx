@@ -4,7 +4,7 @@ import { FaGoogle, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
 import './Signup.css';
 
 const Signup = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Signup = () => {
     { name: "email", placeholder: "Enter your email", type: "email", required: true, maxLength: 100 },
     { name: "phone", placeholder: "Enter your phone number", type: "tel", required: true, maxLength: 15 },
     { name: "password", placeholder: "Enter a password", type: "password", required: true, maxLength: 100 },
-    { name: "confirmPassword", placeholder: "Confirm your password", type: "password", required: true, maxLength: 100 },
+    // { name: "confirmPassword", placeholder: "Confirm your password", type: "password", required: true, maxLength: 100 },
     { name: "address", placeholder: "Enter your address", maxLength: 255 },
   ];
 
