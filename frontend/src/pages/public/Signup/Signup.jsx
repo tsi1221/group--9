@@ -1,113 +1,56 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaGoogle, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
-import './Signup.css';
-
+import React, { useState } from "react";
+import axios from "axios";
+import  "./Signup.css";
 const Signup = () => {
-  const [formData, setFormData] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    firstname: "",
+    middlename: "",
+    lastname: "",
+    email: "",
+    password: "",
+    address: "",
+    phone: "",
+    provider: "local",  // default
+    roleId: 2           // default as integer
+  });
 
   const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-
     try {
-      const res = await fetch('http://localhost:3000/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        alert(data.message || 'Error');
-        return;
-      }
-
-      localStorage.setItem('token', data.token);
-      navigate('/dashboard');
-    } catch (error) {
-      console.error(error);
-      alert('Something went wrong');
+      const res = await axios.post("http://localhost:3000/api/auth/register", formData);
+      alert("User registered successfully!");
+      console.log(res.data);
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+      alert("Registration failed!");
     }
   };
 
-  const RegisterFields = [
-    { name: "firstname", placeholder: "Enter your first name", required: true, maxLength: 50 },
-    { name: "middlename", placeholder: "Enter your middle name", maxLength: 50 },
-    { name: "lastname", placeholder: "Enter your last name", required: true, maxLength: 50 },
-    { name: "email", placeholder: "Enter your email", type: "email", required: true, maxLength: 100 },
-    { name: "phone", placeholder: "Enter your phone number", type: "tel", required: true, maxLength: 15 },
-    { name: "password", placeholder: "Enter a password", type: "password", required: true, maxLength: 100 },
-    // { name: "confirmPassword", placeholder: "Confirm your password", type: "password", required: true, maxLength: 100 },
-    { name: "address", placeholder: "Enter your address", maxLength: 255 },
-  ];
-
   return (
-    <div className="signup-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit} className="signup-form">
-        {RegisterFields.map(field => {
-          const isPassword = field.name === 'password';
-          const isConfirmPassword = field.name === 'confirmPassword';
+    <div className="register-container">
+      <h2>Register</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="firstname" placeholder="First Name" value={formData.firstname} onChange={handleChange} required />
+        <input type="text" name="middlename" placeholder="Middle Name" value={formData.middlename} onChange={handleChange} required />
+        <input type="text" name="lastname" placeholder="Last Name" value={formData.lastname} onChange={handleChange} required />
+        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+        <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
+        <input type="tel" name="phone" placeholder="Phone (+251...)" value={formData.phone} onChange={handleChange} required />
 
-          return (
-            <div key={field.name} className={(isPassword || isConfirmPassword) ? 'password-wrapper' : ''}>
-              <input
-                type={isPassword && showPassword ? 'text' : isConfirmPassword && showConfirmPassword ? 'text' : field.type || 'text'}
-                name={field.name}
-                placeholder={field.placeholder}
-                required={field.required}
-                maxLength={field.maxLength}
-                value={formData[field.name] || ''}
-                onChange={handleChange}
-                className="auth-input"
-              />
-              {(isPassword || isConfirmPassword) && (
-                <span
-                  className="eye-icon"
-                  onClick={() =>
-                    isPassword ? setShowPassword(!showPassword) : setShowConfirmPassword(!showConfirmPassword)
-                  }
-                >
-                  {(isPassword && showPassword) || (isConfirmPassword && showConfirmPassword) ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              )}
-            </div>
-          );
-        })}
-
-        <select
-          name="roleId"
-          required
-          value={formData.roleId || ''}
-          onChange={handleChange}
-          className="auth-input"
-        >
-          <option value=""> Select Role </option>
-          <option value="Client">Client</option>
-          <option value="Lawyer">Lawyer</option>
+        {/* Role dropdown (optional) */}
+        <select name="roleId" value={formData.roleId} onChange={handleChange}>
+          <option value={2}>CLIENT</option>
+          <option value={3}>LAWYER</option>C
         </select>
 
-        <button type="submit" className="signup-btn">Sign Up</button>
+        <button type="submit">Register</button>
       </form>
-
-
-
-      <p className="signup-toggle" onClick={() => navigate('/signin')}>
-        Already have an account? Sign In
-      </p>
+       <div><p>If you have an account, please <a href="/signin">login</a>.</p></div>
     </div>
   );
 };

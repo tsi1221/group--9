@@ -5,40 +5,27 @@ import aboutImage from '../../../assets/about.jpg'; // Replace with your image p
 const About = () => {
   return (
     <div className="about-container">
+      {/* Hero Section */}
       <section className="about-hero">
-        <div className="about-overlay">
-          <h1>About Fithabher</h1>
-          <p>
-            Fithabher is dedicated to providing the best solutions to help you connect, grow, 
-            and achieve your goals. Our platform is designed with simplicity, performance, and
-            love for the user in mind.
-          </p>
-        </div>
-      </section>
-
-      <section className="about-content">
         <div className="about-text">
-          <h2>Our Mission</h2>
+          <h1>About Fitihaber Ethiopia</h1>
           <p>
-            Our mission is to empower every user with seamless digital experiences,
-            ensuring efficiency, reliability, and a touch of joy in every interaction.
-          </p>
-
-          <h2>Our Vision</h2>
-          <p>
-            To become a trusted platform known for excellence, innovation, and making
-            everyday digital tasks easier for everyone.
-          </p>
-
-          <h2>Our Values</h2>
-          <p>
-            Integrity, User-Centric Design, Innovation, and Sustainability guide every
-            decision we make and every feature we build.
+            Fitihaber Ethiopia is a simple, secure, and user-friendly platform connecting lawyers, witnesses,
+            and guarantors online. Our goal is to make legal services accessible and fast for everyone.
           </p>
         </div>
         <div className="about-image">
-          <img src={aboutImage} alt="About Fithabher" />
+          <img src={aboutImage} alt="Fitihaber Ethiopia" />
         </div>
+      </section>
+
+      {/* Mission Section */}
+      <section className="about-mission">
+        <h2>Our Mission</h2>
+        <p>
+          To connect people with legal professionals in a simple, secure way, making legal processes
+          faster and more accessible for everyone in Ethiopia.
+        </p>
       </section>
     </div>
   );

@@ -1,153 +1,148 @@
 /* Howitworks.css */
 
-/* Root Variables for colors and fonts */
+/* Root Variables */
 :root {
-  --primary-color: #2563eb;       /* blue */
-  --secondary-color: #0643b4;     /* darker blue */
-  --text-color: #1e293b;          /* dark slate gray */
-  --bg-color: #ffffff;             /* white background */
-  --step-bg: #f0f4ff;             /* light step background */
-  --circle-bg: #2563eb;           /* circle color */
-  --circle-text: #ffffff;
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --primary-color: #2563EB;
+  --accent-color: #F3F4F6;
+  --text-color: #1F2937;
+  --bg-color: #FFFFFF;
+  --font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --transition-speed: 0.3s;
+  --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  --card-hover-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* Main Container */
+/* Container */
 .container {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 20px;
   font-family: var(--font-family);
   color: var(--text-color);
-  margin-bottom:6.6rem;
+  background-color: var(--bg-color);
+  padding: 11.58rem 2rem; /* Large top and bottom padding */
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 }
 
-/* Title Section */
+/* Header Text */
 .txt {
   text-align: center;
-  margin-bottom: 60px;
+  animation: fadeIn 1s ease forwards;
+  margin-top: -3rem;
 }
 
 .txt h1 {
   font-size: 3rem;
+  margin-bottom: 1rem;
   color: var(--primary-color);
-  margin-bottom: 15px;
   line-height: 1.2;
 }
 
 .txt p {
-  font-size: 1.15rem;
-  color: var(--text-color);
-  line-height: 1.6;
+  font-size: 1.25rem;
+  color: #4B5563;
+  line-height: 1.8;
   max-width: 700px;
   margin: 0 auto;
 }
 
 /* Steps Grid */
 .steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  align-items: start;
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
 }
 
-/* Each Step */
+/* Step Cards */
 .step-item {
-  background-color: var(--step-bg);
-  padding: 30px 20px 20px 20px;
-  border-radius: 15px;
+  background-color: var(--accent-color);
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  border-radius: 20px;
+  padding: 3rem 2rem;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  position: relative;
 }
 
 .step-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: var(--card-hover-shadow);
 }
 
 /* Step Circle */
 .step-circle {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 20px auto;
-  background-color: var(--circle-bg);
-  color: var(--circle-text);
+  background-color: var(--primary-color);
+  color: #fff;
   font-weight: bold;
-  font-size: 1.3rem;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+  margin: 0 auto 1.5rem auto;
+  font-size: 1.5rem;
+  transition: transform var(--transition-speed);
+}
+
+.step-item:hover .step-circle {
+  transform: scale(1.2);
 }
 
 /* Step Titles */
 .step-item h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
   color: var(--primary-color);
-  margin-bottom: 10px;
 }
 
-/* Step Description */
 .step-item p {
-  font-size: 1rem;
+  font-size: 1.125rem;
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Connecting Lines (Optional Visual Flow) */
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background-color: var(--primary-color);
+  z-index: 0;
+}
+
+.step-item {
+  z-index: 1; /* Ensure cards are above the line */
 }
 
 /* Responsive Design */
-
-/* Tablets */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .steps-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
-
-  .txt h1 {
-    font-size: 2.5rem;
-  }
-
-  .txt p {
-    font-size: 1.05rem;
-  }
-
-  .step-item h3 {
-    font-size: 1.4rem;
+    justify-content: center;
   }
 }
 
-/* Mobile */
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .steps-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
   }
 
-  .txt h1 {
-    font-size: 2.2rem;
-  }
-
-  .txt p {
-    font-size: 1rem;
-  }
-
-  .step-item {
-    padding: 25px 15px 15px 15px;
-  }
-
-  .step-circle {
-    width: 50px;
-    height: 50px;
-    font-size: 1.1rem;
-  }
-
-  .step-item h3 {
-    font-size: 1.3rem;
-  }
-
-  .step-item p {
-    font-size: 0.95rem;
+  .steps-grid::before {
+    display: none; /* Remove line on mobile */
   }
 }

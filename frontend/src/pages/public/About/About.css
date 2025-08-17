@@ -1,111 +1,146 @@
 /* About.css */
 
-/* Root Styles */
+/* Root Variables */
+:root {
+  --primary-color: #2563EB;
+  --primary-hover: #1E40AF;
+  --accent-color: #F3F4F6;
+  --text-color: #1F2937;
+  --bg-color: #FFFFFF;
+  --font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* Container */
 .about-container {
-  background-color: #ffffff; /* White background */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #1a1a1a;
-  line-height: 1.6;
-  padding: 0;
-  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  padding: 9rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 
 /* Hero Section */
 .about-hero {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.about-overlay {
-  background-color: rgba(255, 255, 255, 0.85); /* White transparent overlay */
-  padding: 10px 20px;
-  border-radius: 12px;
-  max-width: 800px;
-  margin: auto;
-}
-
-.about-overlay h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  color: #2563EB; /* Primary blue */
-}
-
-.about-overlay p {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-/* Content Section */
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: auto;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .about-text {
-  flex: 1 1 500px;
-  margin-right: 40px;
+  flex: 1;
+  min-width: 300px;
 }
 
-.about-text h2 {
-  font-size: 2rem;
-  color: #2563EB;
-  margin-bottom: 15px;
+.about-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  line-height: 1.2;
+  animation: fadeInUp 1s ease forwards;
 }
 
 .about-text p {
-  font-size: 1rem;
-  margin-bottom: 30px;
-  color: #555;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4B5563;
+  animation: fadeInUp 1.2s ease forwards;
 }
 
 .about-image {
-  flex: 1 1 400px;
+  flex: 1;
+  min-width: 300px;
   text-align: center;
+  animation: fadeIn 1.5s ease forwards;
 }
 
 .about-image img {
   width: 100%;
   max-width: 500px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.about-image img:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Mission Section */
+.about-mission {
+  text-align: center;
+  background-color: var(--accent-color);
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  animation: fadeIn 1s ease forwards;
+}
+
+.about-mission h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.about-mission p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-  .about-content {
+@media (max-width: 768px) {
+  .about-hero {
     flex-direction: column-reverse;
-    padding: 40px 20px;
+    text-align: center;
   }
 
-  .about-text {
-    margin: 0 0 40px 0;
+  .about-text, .about-image {
+    text-align: center;
+  }
+
+  .about-text h1 {
+    font-size: 2rem;
   }
 }
 
-@media (max-width: 600px) {
-  .about-overlay h1 {
-    font-size: 2rem;
+@media (max-width: 480px) {
+  .about-container {
+    padding: 1.5rem 1rem;
   }
 
-  .about-overlay p {
+  .about-text h1 {
+    font-size: 1.75rem;
+  }
+
+  .about-text p,
+  .about-mission p {
     font-size: 1rem;
-  }
-
-  .about-text h2 {
-    font-size: 1.5rem;
-  }
-
-  .about-text p {
-    font-size: 0.95rem;
   }
 }

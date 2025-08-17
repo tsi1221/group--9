@@ -1,22 +1,44 @@
-const prisma = require('../config/prisma'); // adjust path if needed
+// prisma/seed.js
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
-async function seedRoles() {
-  await prisma.role.createMany({
-    data: [
-      { name: "ADMIN" },
-      { name: "CLIENT" },
-      { name: "LAWYER" }
-    ],
-    skipDuplicates: true,
+async function main() {
+  // Upsert means: create if it doesn't exist, otherwise update
+  await prisma.role.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      id: 1,
+      name: "Admin",
+    },
   });
+
+  await prisma.role.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      id: 2,
+      name: "User",
+    },
+  });
+
+  await prisma.role.upsert({
+    where: { id: 3 },
+    update: {},
+    create: {
+      id: 3,
+      name: "Lawyer",
+    },
+  });
+
+  console.log("✅ Roles seeded successfully");
 }
 
-seedRoles()
-  .then(() => {
-    console.log("Roles seeded successfully 🚀");
-    process.exit(0);
-  })
+main()
   .catch((e) => {
-    console.error("Error seeding roles:", e);
+    console.error(e);
     process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
   });

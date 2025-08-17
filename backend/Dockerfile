@@ -4,4 +4,4 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 3000
-CMD ["npx", "nodemon", "server.js"]  
+CMD ["npx", "nodemon", "src/server.js"]

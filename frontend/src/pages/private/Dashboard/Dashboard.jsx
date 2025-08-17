@@ -1,10 +1,13 @@
-import React from 'react';
+import React from "react";
+import DashboardStats from "../../../components/DashboardStats";
+import UsersList from "../../../components/UsersList";
+
 
 const Dashboard = () => {
   return (
-    <div>
-      <h1>Welcome to your Dashboard</h1>
-      <p></p>
+    <div className="admin-dashboard">
+      <DashboardStats />
+      <UsersList />
     </div>
   );
 };

@@ -1,151 +1,99 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+/* Body and container */
+.register-container {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* vertically center */
+  min-height: 100vh;
+  background: #f0f2f7; /* subtle light background */
+  padding: 20px;
+  flex-direction: column;
+  text-align: center; /* center title and form horizontally */
 }
 
-/* Container */
-.signup-container {
-  max-width: 450px;
-  margin: 60px auto;
-  padding: 40px 30px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
-  transition: transform 0.3s ease;
-}
-
-.signup-container:hover {
-  transform: translateY(-3px);
-}
-
-/* Title */
-.signup-container h2 {
-  text-align: center;
-  margin-bottom: 28px;
-  font-size: 2rem;
+/* Title above the form */
+.register-container h2 {
+  color: #333;
   font-weight: 600;
-  color: #2d2d2d;
+  font-size: 32px;
+  margin-bottom: 30px;
 }
 
-/* Form */
-.signup-form {
+/* Form styling */
+form {
+  background: #ffffff;
+  padding: 35px 30px;
+  border-radius: 15px;
+  box-shadow: 0px 12px 28px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  animation: fadeIn 0.8s ease-in-out;
   display: flex;
   flex-direction: column;
-  gap: 18px;
 }
 
-/* Inputs */
-.auth-input {
+/* Inputs and select */
+form input,
+form select {
   width: 100%;
   padding: 14px 16px;
+  margin: 12px 0;
   border: 1px solid #ddd;
   border-radius: 10px;
-  font-size: 1rem;
-  background: #fafafa;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #a6a3eb;
+  box-shadow: 0 0 8px rgba(5, 86, 236, 0.856);
   outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
-.auth-input:focus {
-  border-color: #007bff;
-  background: #fff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
-}
-
-/* Password visibility */
-.password-wrapper {
-  position: relative;
-}
-
-.eye-icon {
-  position: absolute;
-  top: 50%;
-  right: 14px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #777;
-  font-size: 1.1rem;
-  transition: color 0.2s;
-}
-
-.eye-icon:hover {
-  color: #007bff;
-}
-
-/* Dropdown */
-select.auth-input {
-  appearance: none;
-  background: #fafafa;
-  cursor: pointer;
-}
-
-/* Submit button */
-.signup-btn {
+/* Button styling */
+form button {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: #fff;
-  font-weight: 600;
+  background: #0f2fe4;
   border: none;
   border-radius: 10px;
-  font-size: 1rem;
+  color: #fff;
+  font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s, transform 0.2s;
-}
-
-.signup-btn:hover {
-  opacity: 0.9;
-  transform: scale(1.02);
-}
-
-/* Toggle link */
-.signup-toggle {
+  font-size: 16px;
+  transition: 0.3s ease;
   margin-top: 20px;
-  text-align: center;
-  font-size: 0.95rem;
-  color: #007bff;
-  cursor: pointer;
-  user-select: none;
-  transition: text-decoration 0.2s;
 }
 
-.signup-toggle:hover {
-  text-decoration: underline;
+form button:hover {
+  background: #060331;
 }
 
-/* RESPONSIVENESS */
-@media (max-width: 768px) {
-  .signup-container {
-    margin: 40px 20px;
-    padding: 28px 22px;
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
   }
-
-  .signup-container h2 {
-    font-size: 1.7rem;
-  }
-
-  .signup-btn {
-    padding: 12px;
-    font-size: 0.95rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* Responsive adjustments */
 @media (max-width: 480px) {
-  .signup-container {
-    margin: 20px 15px;
-    padding: 22px;
-    border-radius: 12px;
+  .register-container {
+    padding: 20px 15px;
   }
-
-  .signup-container h2 {
-    font-size: 1.5rem;
+  .register-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
   }
-
-  .auth-input {
-    padding: 12px 14px;
-    font-size: 0.9rem;
+  form {
+    padding: 25px 20px;
   }
 }

@@ -9,10 +9,10 @@ const login = async (req, res) => {
   try {
     // Find user by email or phone
     const user = await getUserByEmailOrPhone(identifier);
+if (!user || user.provider !== 'local') {
+  return res.status(400).json({ message: 'Invalid email/phone or login method' });
+}
 
-    if (!user || user.provider !== 'local') {
-      return res.status(400).json({ message: 'Invalid email/phone or login method' });
-    }
 
     // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
