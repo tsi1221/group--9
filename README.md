@@ -147,7 +147,10 @@ DevOps
 🔥 INSA Summer Camp 2025 - Group 9  Welcome to Group 9’s official repository for the INSA Summer Camp 2025! We’re a team of four passionate students from INSA, working together to build a creative, impactful, and technically strong project. Stay tuned for updates as we bring our vision to life! 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Alazar
 //// TITLE- Fitihaber Ethiopia
 
 
@@ -255,8 +258,11 @@ The microservices approach ensures scalability, fault isolation, and independent
         Document Service → encrypted uploads, version tracking, access permissions.
 
     DevOps: Docker, Kubernetes, CI/CD, CDN for global content delivery.
+<<<<<<< HEAD
 
    and we will make mulitlingual platform
+=======
+>>>>>>> Alazar
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -266,4 +272,8 @@ Run npm install in both frontend and backend folders.
 Start frontend: npm run dev (http://localhost:5173/)
 Start backend: npx nodemon server.js (http://localhost:3000/)
 docker run postgres:15-alpine
+<<<<<<< HEAD
 >>>>>>> tsehay
+=======
+
+>>>>>>> Alazar

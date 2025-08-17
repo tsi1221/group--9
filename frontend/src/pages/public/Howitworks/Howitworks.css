@@ -1,0 +1,151 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 20px 80px 20px;
+  box-sizing: border-box;
+  background-color: #e6f0ff; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.txt {
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 800px;
+}
+
+.txt h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #007BFF; 
+  margin-bottom: 15px;
+}
+
+.txt p {
+  font-size: 1.25rem;
+  color: #333;
+  line-height: 1.7;
+}
+
+.steps-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap; 
+  max-width: 1200px;
+  position: relative;
+}
+
+.step-item {
+  flex: 1 1 300px;
+  background-color: #ffffff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.step-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.2);
+}
+
+.step-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 15px;
+  background-color: #2563eb; 
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.3s;
+}
+
+.step-item:hover .step-circle {
+  background-color: #0c32af; 
+}
+
+.step-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #004080;
+}
+
+.step-item p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.steps-grid .step-item:last-child::after {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .txt h1 {
+    font-size: 2.4rem;
+  }
+
+  .txt p {
+    font-size: 1.15rem;
+  }
+
+  .step-item h3 {
+    font-size: 1.35rem;
+  }
+
+  .step-item p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .steps-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .step-item {
+    width: 100%;
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 480px) {
+  .txt h1 {
+    font-size: 2rem;
+  }
+
+  .txt p {
+    font-size: 1rem;
+  }
+
+  .step-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.25rem;
+  }
+
+  .step-item h3 {
+    font-size: 1.25rem;
+  }
+
+  .step-item p {
+    font-size: 0.95rem;
+  }
+}
