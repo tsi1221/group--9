@@ -7,14 +7,15 @@
 
 /* Container */
 .signin-container {
-  max-width: 420px;
-  margin: 60px auto;
-  padding: 35px 30px;
+  max-width: 490px;
+  margin: 80px auto;
+  padding: 70px 50px;   /* increased vertical padding from 55px → 70px */
   border-radius: 16px;
   background: #ffffff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
   transition: transform 0.3s ease;
+  min-height: 550px;     /* ensures container always has enough height */
 }
 
 .signin-container:hover {

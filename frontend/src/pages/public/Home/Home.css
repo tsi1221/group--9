@@ -2,7 +2,7 @@
 :root {
   --primary-color: #eceff5;
   --secondary-color: #f3f4f6;
-  --text-color: #1f29378c;
+  --text-color: #1f2937c2;
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.171);
+  background-color: rgba(48, 45, 45, 0.37);
   padding: 60px 20px;
   border-radius: 12px;
   max-width: 900px;
@@ -62,6 +62,7 @@
 
 .btn-primary:hover {
   background-color: #e5e7f0;
+   color: #1a0202;
 }
 
 .btn-secondary {
@@ -79,7 +80,7 @@
 .features {
   padding: 80px 20px;
   text-align: center;
-   background: rgba(255, 255, 255, 0.7)
+   background: rgba(255, 255, 255, 0.815)
 }
 
 .features h2 {

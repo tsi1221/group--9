@@ -1,0 +1,139 @@
+.dashboard-container {
+  padding: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+/* Stats Cards */
+.stats-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5.5rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.card {
+  flex: 1 1 250px;
+  max-width: 280px;
+  padding: 2rem;
+  border-radius: 18px;
+  text-align: center;
+  gap: 1.5rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+/* Hover Effect */
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual card colors */
+.card-users {
+  background: linear-gradient(135deg, #6ba6ff, #4d88ff);
+}
+
+.card-lawyers {
+  background: linear-gradient(135deg, #7bd29e, #50b77c);
+}
+
+.card-cases {
+  background: linear-gradient(135deg, #ffd36b, #ffb347);
+}
+
+.card-payment {
+  background: linear-gradient(135deg, #b389f4, #7e61d9);
+}
+
+/* Charts */
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.chart-container {
+  flex: 1 1 550px;
+  min-width: 320px;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.chart-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.chart-container h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .stats-cards {
+    gap: 1.5rem;
+  }
+
+  .chart-container {
+    flex: 1 1 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 2rem;
+  }
+
+  .card p {
+    font-size: 2rem;
+  }
+
+  .chart-container h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .chart-container {
+    width: 95%;
+  }
+}
