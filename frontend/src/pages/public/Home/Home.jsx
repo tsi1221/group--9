@@ -1,75 +1,93 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { FaUserTie, FaEye, FaShieldAlt } from "react-icons/fa";
 import "./Home.css";
 
+import verifyImg from "../../../assets/verify.jpg";
+import seemlessImg from "../../../assets/seemless.png";
+import caseImg from "../../../assets/case.png";
+
 const Home = () => {
-  const navigate = useNavigate();
-
   return (
-    <div className="home-container">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-overlay">
-          <h1 className="hero-title">Connect with Legal Professionals</h1>
-          <p className="hero-subtitle">
-            Find and connect with lawyers, witnesses, and guarantors for your legal needs.
-            Our platform simplifies the process, ensuring you have the support you need.
+    <div>
+      {/* Header Section */}
+      <section className="header">
+        <div className="text-box">
+          <h1>Get matched with the right lawyer today</h1>
+          <p>
+            If you need an experienced lawyer, we have the solution, let us
+            connect you to <br />
+            lawyers that fight for you in the court.
           </p>
-          <div className="hero-buttons">
-            <button className="btn-primary" onClick={() => navigate("/signup")}>
-              Sign Up
-            </button>
-            <button className="btn-secondary" onClick={() => navigate("/signin")}>
-              Log In
-            </button>
+          <a href="/signup" className="button-like">
+            Sign up to start working with us
+          </a>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="services">
+        <h1>Services we offer</h1>
+        <p>
+          We provide a wide range of legal services designed to connect you
+          with trusted lawyers and simplify your legal journey.
+        </p>
+        <div className="rows">
+          <div className="services-col">
+            <h3>Consulting</h3>
+            <p>
+              Get expert legal advice from professionals who specialize in
+              different fields of law, ensuring you make informed decisions
+              before taking action.
+            </p>
+          </div>
+          <div className="services-col">
+            <h3>Case Management</h3>
+            <p>
+              Track, organize, and manage your legal cases in one place. From
+              documentation to deadlines, we help you stay on top of every
+              detail.
+            </p>
+          </div>
+          <div className="services-col">
+            <h3>Assistance on Legal Procedures</h3>
+            <p>
+              Our platform guides you through complex legal processes such as
+              filing cases, drafting contracts, and handling legal paperwork
+              efficiently.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Key Features Section */}
+      {/* Features Section */}
       <section className="features">
-        <h2 className="section-title">Key Features</h2>
-        <p className="section-description">
-          Our platform offers a range of features designed to streamline your legal process.
+        <h1>Key Features</h1>
+        <p>
+          Our company provides unique features that make us stand out in the
+          legal consultancy space.
         </p>
-
-        <div className="features-grid">
+        <div className="rerows">
           <div className="feature-card">
-            <FaUserTie className="feature-icon" />
-            <h3 className="feature-title">Connect with Lawyers</h3>
-            <p className="feature-desc">
-              Easily search and connect with experienced lawyers specializing in various fields of law.
+            <img src={verifyImg} alt="Verified Lawyers" />
+            <h3>Verified Lawyers</h3>
+            <p>
+              We only connect you with licensed, experienced, and trustworthy
+              lawyers.
             </p>
           </div>
-
           <div className="feature-card">
-            <FaEye className="feature-icon" />
-            <h3 className="feature-title">Find Reliable Witnesses</h3>
-            <p className="feature-desc">
-              Locate and connect with credible witnesses to support your case.
+            <img src={seemlessImg} alt="Seamless Communication" />
+            <h3>Seamless Communication</h3>
+            <p>
+              Chat, call, or video conference with your lawyer directly on our
+              platform.
             </p>
           </div>
-
           <div className="feature-card">
-            <FaShieldAlt className="feature-icon" />
-            <h3 className="feature-title">Secure Guarantors</h3>
-            <p className="feature-desc">
-              Find and secure guarantors to ensure compliance with legal requirements.
-            </p>
+            <img src={caseImg} alt="Case Tracking" />
+            <h3>Case Tracking</h3>
+            <p>Track the progress of your case in real time with regular updates.</p>
           </div>
         </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="cta">
-        <h2 className="cta-title">Ready to Get Started?</h2>
-        <p className="cta-subtitle">
-          Sign up today and take the first step towards a smoother legal journey.
-        </p>
-        <button className="btn-primary btn-cta" onClick={() => navigate("/signup")}>
-          Get Started
-        </button>
       </section>
     </div>
   );

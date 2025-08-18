@@ -1,191 +1,196 @@
-/* Root & Fonts */
-:root {
-  --primary-color: #eceff5;
-  --secondary-color: #f3f4f6;
-  --text-color: #1f2937c2;
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Global Container */
-.home-container {
-  font-family: var(--font-family);
-  color: var(--text-color);
+* {
   margin: 0;
   padding: 0;
- 
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Hero Section */
-.hero {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Header */
+.header {
   min-height: 100vh;
-  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5cnbRIlhhBrfQJgc83xNABEnrybv1whd6Aw&s') center/cover no-repeat;
-  color: hsla(336, 21%, 91%, 0.945);
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.2), rgba(4, 9, 30, 0.2)),
+    url('https://img.freepik.com/free-photo/lady-justice-statue_23-2151945761.jpg?semt=ais_hybrid&w=740&q=80');
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.text-box {
+  width: 90%;
+  color: #fffdfd;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.hero-overlay {
-  background-color: rgba(48, 45, 45, 0.37);
-  padding: 60px 20px;
-  border-radius: 12px;
-  max-width: 900px;
+.text-box h1 {
+  font-size: 62px;
+  color: #ffffff;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
+.text-box p {
+  margin: 10px 0 40px;
+  font-size: 18px;
+  color: #f0f0f0;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.hero-buttons button {
-  margin: 10px;
-  padding: 12px 30px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: none;
+.button-like {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  border: 1px solid #fff;
+  padding: 15px 40px;
+  font-size: 16px;
+  background: transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.5s;
 }
 
-.btn-primary {
-  background-color: var(--primary-color);
-  color: #fff;
+.button-like:hover {
+  border: 1px solid #0056b3;
+  background: #0056b3;
 }
 
-.btn-primary:hover {
-  background-color: #e5e7f0;
-   color: #1a0202;
+/* Services Section */
+.services {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 100px;
 }
 
-.btn-secondary {
-  background-color: #fff;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+.services h1 {
+  font-size: 36px;
+  font-weight: 600;
+  color: #007BFF;
 }
 
-.btn-secondary:hover {
-  background-color: var(--primary-color);
-  color: #fff;
+.services p {
+  color: #333;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 10px;
+}
+
+.rows {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap; /* Keep boxes horizontal */
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .rows {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Service Boxes */
+.services-col {
+  flex: 1 1 30%;
+  background: #faf7f7;
+  border-radius: 12px;
+  padding: 25px 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.services-col:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.2);
+}
+
+.services-col h3 {
+  color: #004080;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.services-col p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 /* Features Section */
 .features {
-  padding: 80px 20px;
   text-align: center;
-   background: rgba(255, 255, 255, 0.815)
+  padding: 60px 20px;
+  background: #f9f9f9;
 }
 
-.features h2 {
+.features h1 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  color: #007BFF;
 }
 
 .features p {
-  font-size: 1.1rem;
-  margin-bottom: 50px;
-  color: #374151;
+  color: #555;
+  margin-bottom: 40px;
+  font-size: 1rem;
 }
 
-.features-grid {
+.rerows {
   display: flex;
-  gap: 30px;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 30px;
 }
 
+/* Feature Boxes */
 .feature-card {
+  flex: 1 1 280px;
   background: #fff;
-  padding: 30px 20px;
+  padding: 25px 20px;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.2);
 }
 
-.feature-icon {
-  font-size: 3rem;
-  color: var(--primary-color);
-  margin-bottom: 20px;
+.feature-card img {
+  width: 80px;
+  margin-bottom: 15px;
+  border-radius: 50%;
 }
 
 .feature-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  color: #004080;
+  font-size: 1.25rem;
 }
 
 .feature-card p {
-  color: #6b7280;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
 }
 
-/* CTA Section */
-.cta {
-  padding: 80px 20px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.7);
-  color: #110101;
-}
-
-.cta h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.cta p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.btn-cta {
-  padding: 15px 40px;
-  font-size: 1.2rem;
-  border-radius: 10px;
-}
-
-.btn-cta:hover {
-  font-weight: bold;
-  background-color: #1450d1; /* nice blue color */
-  color: #fff; /* text remains white */
-  transform: scale(1.05); /* optional: subtle pop-up effect */
-}
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .hero h1 {
-    font-size: 2.5rem;
+/* Responsive */
+@media (max-width: 700px) {
+  .text-box h1 {
+    font-size: 30px;
   }
-  .features-grid {
+
+  .rows {
     flex-direction: column;
     align-items: center;
   }
-}
 
-@media (max-width: 640px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
-  .features h2 {
-    font-size: 2rem;
-  }
-  .features p {
-    font-size: 1rem;
-  }
-  .cta h2 {
-    font-size: 2rem;
+  .services-col,
+  .feature-card {
+    width: 100%;
+    max-width: 450px;
   }
 }

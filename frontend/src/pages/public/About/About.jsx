@@ -1,30 +1,51 @@
-import React from 'react';
-import './About.css';
-import aboutImage from '../../../assets/about.jpg'; // Replace with your image path
+import React from 'react'
+import "./About.css";
 
 const About = () => {
   return (
-    <div className="about-container">
-      {/* Hero Section */}
-      <section className="about-hero">
+    <div>
+      {/* About Header */}
+      <section className="about-header">
+        <h1>About Us</h1>
+        <p>
+          Building trust, delivering justice, and empowering clients with <br />
+          reliable legal consultation.
+        </p>
+      </section>
+
+      {/* About Section */}
+      <section className="about-section">
         <div className="about-text">
-          <h1>About Fitihaber Ethiopia</h1>
+          <h2>Who We Are</h2>
           <p>
-            Fitihaber Ethiopia is a simple, secure, and user-friendly platform connecting lawyers, witnesses,
-            and guarantors online. Our goal is to make legal services accessible and fast for everyone.
+            We are a team of dedicated and experienced developers with the aim
+            of connecting clients with legal professionals committed to
+            connecting clients with the right lawyers. Our platform ensures that
+            every lawyer you meet is verified, licensed, and ready to provide
+            the best legal advice tailored to your needs.
+          </p>
+          <p>
+            Since our founding, we have helped countless individuals and
+            businesses navigate complex legal challenges with confidence and
+            ease.
           </p>
         </div>
         <div className="about-image">
-          <img src={aboutImage} alt="Fitihaber Ethiopia" />
+          <img
+            src="https://attorneyatlawmagazine.com/wp-content/uploads/2023/08/bigstock-Ai-Ethics-Or-Ai-Law-Concept-D-477080089-1024x675.jpg"
+            alt="Law Office"
+          />
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="about-mission">
+      <section className="mission">
         <h2>Our Mission</h2>
         <p>
-          To connect people with legal professionals in a simple, secure way, making legal processes
-          faster and more accessible for everyone in Ethiopia.
+          Our mission is to make legal help accessible, secure, and reliable
+          for everyone. By combining modern technology with trusted legal
+          expertise, we aim to break barriers and deliver justice where it
+          matters most.
         </p>
       </section>
     </div>
