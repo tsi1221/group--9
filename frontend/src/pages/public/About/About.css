@@ -1,108 +1,125 @@
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
-    }
+/* Root Variables */
+:root {
+  --primary-color: #2563EB;
+  --primary-hover: #1E40AF;
+  --accent-color: #FFFFFF;
+  --text-color: #1F2937;
+  --bg-color: #FFFFFF;
+  --font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --transition-speed: 0.3s;
+}
 
-    body {
-      background: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-    }
+/* Reset & Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
 
-    header {
-      background: #1f1f1f;
-      color: #fff;
-      padding: 1.2rem;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 10px;
-    }
+/* About Header */
+.about-header {
+  background: url("https://i0.wp.com/spd.tech/wp-content/uploads/2022/02/Benefits-of-Legal-Technology_-How-it-Can-Benefit-Your-Business.webp?fit=4000%2C2040&ssl=1") center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  margin-top: -5rem;
+}
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+.about-header h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
 
-    nav a:hover {
-      color: #ffd369;
-    }
+.about-header p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: auto;
+}
 
-    .about-header {
-      background: url("https://i0.wp.com/spd.tech/wp-content/uploads/2022/02/Benefits-of-Legal-Technology_-How-it-Can-Benefit-Your-Business.webp?fit=4000%2C2040&ssl=1");
-      background-size: cover;
-      color: #fff;
-      text-align: center;
-      padding: 100px 20px;
-    }
+/* About Section */
+.about-section {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
 
-    .about-header h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-    }
+.about-text h2 {
+  color: #b6895b;
+  margin-bottom: 15px;
+}
 
-    .about-header p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: auto;
-    }
+.about-text p {
+  margin-bottom: 15px;
+}
 
-    .about-section {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: center;
-    }
+.about-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform var(--transition-speed);
+}
 
-    .about-text h2 {
-      color: #b6895b;
-      margin-bottom: 15px;
-    }
+.about-image img:hover {
+  transform: translateY(-5px) scale(1.02);
+}
 
-    .about-text p {
-      margin-bottom: 15px;
-    }
+/* Mission Section */
+.mission {
+  background: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
 
-    .about-image img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
+.mission h2 {
+  color: #b6895b;
+  margin-bottom: 20px;
+}
 
-    .mission {
-      background: #fff;
-      padding: 50px 20px;
-      text-align: center;
-    }
+.mission p {
+  max-width: 800px;
+  margin: auto;
+  font-size: 1.1rem;
+}
 
-    .mission h2 {
-      color: #b6895b;
-      margin-bottom: 20px;
-    }
+/* Footer */
+footer {
+  background: #1f1f1f;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
 
-    .mission p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.1rem;
-    }
+/* Responsive */
+@media (max-width: 768px) {
+  .about-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
 
-    footer {
-      background: #1f1f1f;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
-    }
+@media (max-width: 480px) {
+  .about-header h1 {
+    font-size: 2rem;
+  }
+
+  .about-header p {
+    font-size: 1rem;
+  }
+
+  .mission p {
+    font-size: 1rem;
+  }
+}

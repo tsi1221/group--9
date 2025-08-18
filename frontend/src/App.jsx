@@ -15,11 +15,12 @@ import Signup from './pages/public/Signup/Signup.jsx';
 import ForgetPassword from './pages/public/Forgetpassword/Forgetpassword.jsx';
 
 import Dashboard from './pages/private/Dashboard/Dashboard.jsx';
-import Calendar from './pages/private/Calendar/Calendar.jsx';
-import Cases from './pages/private/Cases/Cases.jsx';
+import Users from './pages/private/Users/Users.jsx';
+import Lawyers from './pages/private/Lawyer/Lawyer.jsx';
 import Messages from './pages/private/Messages/Messages.jsx';
 import Billings from './pages/private/Billings/Billings.jsx';
 import Settings from './pages/private/Settings/Settings.jsx';
+import Profile from './pages/private/profile/Profile.jsx';
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -64,11 +65,12 @@ const App = () => {
         }
       >
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/calendar" element={<Calendar />} />
-        <Route path="/cases" element={<Cases />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/lawyers" element={<Lawyers/>} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/billings" element={<Billings />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Dashboard />} />
       </Route>
     </Routes>

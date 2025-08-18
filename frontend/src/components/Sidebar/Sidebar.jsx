@@ -1,18 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaFolderOpen,  FaCalendarAlt,  FaEnvelope,  FaDollarSign,  FaUserCircle,  FaCog, FaGamepad, FaHammer,} from 'react-icons/fa';
+import { FaHome,FaEnvelope,  FaDollarSign,  FaUserCircle,  FaCog, FaGamepad, FaHammer, FaUserTie, FaUserAlt,} from 'react-icons/fa';
 import './Sidebar.css';
-import logo2 from '../../assets/logo.svg'
+
+import logo from '../../assets/logo1.png';
 
 const Sidebar = () => {
   return (
     <aside className="sidebar">
-      <div className="side-logo"> <img src={logo2} alt="logo"/><p>Fithabher</p></div>
+      <div className="side-logo"> <img src={logo} alt="logo"/><p>Fithabher</p></div>
 
       <nav className="sidebar-nav">
              <NavLink to="/dashboard"><FaHome /> Dashboard</NavLink>
-             <NavLink to="/cases"><FaFolderOpen /> Cases</NavLink>
-             <NavLink to="/calendar"><FaCalendarAlt /> Calendar</NavLink>
+             <NavLink to="/lawyers"><FaUserTie /> Lawyers</NavLink>
+             <NavLink to="/users"><FaUserAlt /> Users</NavLink>
              <NavLink to="/messages"><FaEnvelope /> Messages</NavLink>
              <NavLink to="/billings"><FaDollarSign /> Billings</NavLink>
       </nav>

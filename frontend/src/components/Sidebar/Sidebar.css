@@ -1,11 +1,11 @@
 .sidebar {
-  width: 255px;
-  background: #aca8a8;
+  width: 275px;
+  background: #02072bef;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px 10px;
-  box-shadow: 2px 0 5px rgba(163, 136, 136, 0.1);
+  box-shadow: 2px 0 5px rgba(224, 208, 208, 0.034);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -16,6 +16,10 @@
 .side-logo img{
     width: 30px;
 }
+
+.logo {
+  fill: white; /* changes SVG color */
+}
 .side-logo{
     display: flex;
     gap: 10px;
@@ -23,13 +27,16 @@
     text-decoration: none;
     margin-bottom: 0;
     margin-left: 16px;
+    color:white;
+    fill: white;
     margin-bottom: 15px;
 }
 
 .side-logo p{
     font-family: sans-serif;
     font-weight: bolder;
-    font-size: 18px;
+    font-size: 22px;
+    color: aliceblue;
 }
 
 .sidebar-nav a,
@@ -39,7 +46,7 @@
   gap: 10px;
   padding: 12px 15px;
   margin-bottom: 10px;
-  color: #333;
+  color: #fff;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
@@ -50,9 +57,10 @@
 .sidebar-nav a:hover,
 .sidebar-bottom a.active,
 .sidebar-bottom a:hover {
-  background-color: #f0f0f0;
+  background-color: #f59b77ab;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  color: #111;
+  color: #ffff;
+  font-size: medium;
 }
 
 .sidebar-bottom {

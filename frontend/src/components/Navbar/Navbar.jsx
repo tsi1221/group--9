@@ -37,9 +37,9 @@ const Navbar = () => {
 
       <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
         <NavLink to="/">Home</NavLink>
+        <NavLink to="/about">About</NavLink>
         <NavLink to="/howitworks">How it works</NavLink>
         <NavLink to="/contact">Contact</NavLink>
-        <NavLink to="/about">About</NavLink>
       </div>
 
       <button className="btn" onClick={handleAuthToggle}>

@@ -1,130 +1,143 @@
-/* Signup.css */
-
-/* Import Google Font */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
-
+/* Root Variables */
 :root {
-  --primary-color: #2563eb;   /* Blue */
-  --primary-dark: #1e40af;
-  --secondary-color: #f9fafb;
-  --border-color: #e5e7eb;
-  --text-color: #111827;
+  --primary-color: #2563EB;
+  --primary-hover: #1E40AF;
+  --text-color: #1F2937;
+  --input-bg: #f9f9f9;
+  --input-border: #ddd;
   --error-color: #dc2626;
-  --radius: 12px;
-  --transition: 0.3s ease;
+  --font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --transition-speed: 0.3s;
 }
 
-* {
+/* Full Page Background */
+html, body {
+  background-color: #ffffff;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #eff6ff, #f9fafb);
+  font-family: var(--font-family);
   color: var(--text-color);
+  min-height: 100vh;
 }
 
 /* Container */
 .register-container {
-  width: 100%;
-  max-width: 520px;
-  margin: 60px auto;
-  padding: 2rem;
-  background: white;
-  border-radius: var(--radius);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.8s ease-in-out;
-}
-
-.register-container h2 {
+  background-color: #ffffff;
+  max-width: 750px; /* increased width */
+  width: 90%; /* responsive width */
+  margin: 2rem auto;
+  padding: 4rem 3rem; /* increased padding */
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
   text-align: center;
-  margin-bottom: 1.8rem;
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--primary-dark);
+  box-sizing: border-box;
 }
 
-/* Form Inputs */
-.register-container form {
+/* Heading */
+.register-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: black;
+}
+
+/* Form */
+form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.75rem; /* increased gap between fields */
 }
 
-.register-container input,
-.register-container select {
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  font-size: 0.95rem;
+/* Inputs and Select */
+input, select {
+  padding: 1rem 1.25rem; /* increased padding for comfort */
+  font-size: 1.1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  background-color: var(--input-bg);
+  transition: all var(--transition-speed);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
   outline: none;
-  transition: var(--transition);
-}
-
-.register-container input:focus,
-.register-container select:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
 }
 
 /* Button */
-.register-container button {
-  padding: 0.9rem;
+button {
+  padding: 1rem 1.2rem; /* more padding */
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--primary-color);
   border: none;
-  border-radius: var(--radius);
-  background: var(--primary-color);
-  color: white;
-  font-size: 1rem;
-  font-weight: 500;
+  border-radius: 12px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
 }
 
-.register-container button:hover {
-  background: var(--primary-dark);
+button:hover {
+  background-color: var(--primary-hover);
   transform: translateY(-2px);
 }
 
-.register-container button:active {
-  transform: scale(0.98);
-}
-
-/* Footer Text */
+/* Info text */
 .register-container p {
-  margin-top: 1rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #6b7280;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #555;
 }
 
 .register-container a {
   color: var(--primary-color);
-  font-weight: 500;
   text-decoration: none;
+  font-weight: 600;
 }
 
 .register-container a:hover {
   text-decoration: underline;
 }
 
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
+/* Responsive Design */
+@media (max-width: 768px) {
+  .register-container {
+    margin: 2rem 1rem;
+    padding: 3rem 2rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .register-container h2 {
+    font-size: 1.85rem;
+  }
+
+  input, select {
+    font-size: 1rem;
+    padding: 0.9rem 1rem;
+  }
+
+  button {
+    font-size: 1.05rem;
+    padding: 0.85rem 1rem;
   }
 }
 
-/* Responsive */
-@media (max-width: 500px) {
+@media (max-width: 480px) {
   .register-container {
-    margin: 30px 15px;
     padding: 2rem 1.5rem;
+  }
+
+  .register-container h2 {
+    font-size: 1.6rem;
+  }
+
+  input, select {
+    font-size: 0.95rem;
+    padding: 0.8rem 0.9rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
   }
 }

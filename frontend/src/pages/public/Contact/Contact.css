@@ -1,132 +1,126 @@
-/* 🌟 Container */
+/* Contact.css */
+
+/* Overall container */
 .container1 {
-  width: 90%;                /* default width relative to viewport */
-  max-width: 2600px;         /* upper limit for large screens */
-  min-width: 320px;           /* lower limit for small devices */
-  margin: 0 auto;
-  padding: 40px 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #1a1a1a;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-
-  box-sizing: border-box;    /* ensures padding included in width */
-}
-
-/* Headings */
-.container1 h1 {
+  background: #ffffff;
+  padding: 100px 20px;
   text-align: center;
-  font-size: clamp(2rem, 4vw, 2.8rem); /* fluid font scaling */
-  margin-bottom: 40px;
-  color: #007BFF; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
 }
 
-/* Contact Wrapper */
+/* Section Title */
+.container1 h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #01040e; /* deep blue accent */
+  margin-bottom: 60px;
+  position: relative;
+  margin-top: -2rem;
+}
+
+.container1 h1::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #1e3a8a;
+  margin: 14px auto 0;
+  border-radius: 2px;
+}
+
+/* Wrapper (2-column layout) */
 .contact-wrapper {
   display: flex;
-  gap: 40px;
+  gap: 50px;
+  max-width: 1700px;
+  margin: 0 auto;
+  align-items: stretch;
   flex-wrap: wrap;
-  margin-bottom: 8rem;
 }
 
-/* Left Column */
+/* Left side (Contact info) */
 .left {
-  flex: 1 1 350px;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 3rem;
 }
 
-/* Box Styles */
+/* Contact info box */
 .box {
-  background-color: #ffffff; 
-  padding: 25px;
+  background: #f9fafb;
+  padding: 25px 80px;
   border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .box:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(1, 9, 75, 0.2);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
+/* Box heading with icon */
 .box h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
-  font-size: 1.35rem;
-  margin-bottom: 12px;
-  color: #070c13;
+  gap: 10px;
 }
 
-.box h2 svg {
-  margin-right: 12px;
-  color: #1c1e20;
-}
-
+/* Contact info text */
 .box p {
-  font-size: 1rem;
+  font-size: 1.05rem;
+  color: #444;
+  margin: 0;
   line-height: 1.6;
-  color: #0643b4;
 }
 
 .box a {
+  color: #1e3a8a;
   text-decoration: none;
-  color: #0643b4;
+  transition: color 0.2s ease;
 }
 
 .box a:hover {
-  text-decoration: underline;
+  color: #0f172a; /* darker hover */
 }
 
-/* Right Column */
+/* Right side (Google Map) */
 .right {
-  flex: 2 1 500px;
+  flex: 1.2;
   min-height: 400px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-.right iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-/* Responsive Breakpoints */
-@media (max-width: 1200px) {
-  .container1 {
-    width: 95%;
-  }
-}
-
+/* Responsive */
 @media (max-width: 992px) {
   .contact-wrapper {
     flex-direction: column;
   }
 
-  .left, .right {
-    flex: 1 1 100%;
-  }
-
-  .container1 h1 {
-    font-size: 2.4rem;
+  .right {
+    min-height: 350px;
   }
 }
 
-@media (max-width: 576px) {
-  .container1 {
-    width: 100%;
-    padding: 25px 15px;
+@media (max-width: 768px) {
+  .container1 h1 {
+    font-size: 2.2rem;
   }
 
   .box h2 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
   .box p {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }
